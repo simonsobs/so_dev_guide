@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to SO Developer Guide's documentation!
-==============================================
+Welcome to the SO Developer Guide
+=================================
 
 .. toctree::
    :maxdepth: 2
@@ -12,6 +12,7 @@ Welcome to SO Developer Guide's documentation!
 
    intro
    common
+   docs
    daq
    tod
    analysis

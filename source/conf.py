@@ -24,10 +24,12 @@ copyright = '2018, Simons Observatory Collaboration'
 author = 'Simons Observatory Collaboration'
 
 # The short X.Y version
-version = ''
+version = '0.1'
 # The full version, including alpha/beta/rc tags
-release = ''
+release = '0.1draft'
 
+# Show todos?
+todo_include_todos = True
 
 # -- General configuration ---------------------------------------------------
 
