@@ -12,6 +12,7 @@ Welcome to the SO Developer Guide
 
    intro
    common
+   version_control
    docs
    daq
    tod
