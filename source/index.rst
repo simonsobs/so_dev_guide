@@ -6,15 +6,27 @@
 SO Developer Guide
 ==================
 
+==============
+General Advice
+==============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    intro
    common
    version_control
    docs
+
+============================
+Special Guidance for Domains
+============================
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents:
+
    daq
    tod
    analysis

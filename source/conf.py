@@ -144,6 +144,7 @@ latex_documents = [
      'Simons Observatory Collaboration', 'manual'),
 ]
 
+latex_toplevel_sectioning = 'part'
 
 # -- Options for manual page output ------------------------------------------
 
