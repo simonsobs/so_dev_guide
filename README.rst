@@ -38,8 +38,9 @@ follows:
 
 Note that the "version" and "release" are automatically generated, in
 conf.py, by a script taken from versioneer_.  This uses the most
-recent git tag of the form vX.y.z.  This won't work at all if builds
-are run in a copy of the source that is not a git repository.
+recent git tag of the form vX.y.z.  If the git tree is exported, a
+trigger in .gitattributes will insert the latext such information to
+version.py.
 
 .. _versioneer: https://github.com/warner/python-versioneer
 
