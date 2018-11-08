@@ -129,7 +129,7 @@ To get versioneer operating on your python project, do the following:
    you've made the changes to setup.cfg and setup.py; it will also
    create _version.py in your python source tree, versioneer.py in the
    root level, and will modify a few other git/PyPI files.  ``git
-   status`` will show something like:
+   status`` will show something like::
 
    	new file:   .gitattributes
 	modified:   MANIFEST.in
