@@ -15,7 +15,8 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-
+import sys
+sys.path.append('.')
 
 # -- Project information -----------------------------------------------------
 
@@ -23,10 +24,17 @@ project = 'SO Developer Guide'
 copyright = '2018, Simons Observatory Collaboration'
 author = 'Simons Observatory Collaboration'
 
+# Load version from versioneer.
+try:
+    import version
+    version_code = version.get_versions()['version']
+except:
+    version_code = '(unknown)'
+
 # The short X.Y version
-version = '0.1'
+version = version_code
 # The full version, including alpha/beta/rc tags
-release = '0.1draft'
+release = version_code
 
 # Show todos?
 todo_include_todos = True
