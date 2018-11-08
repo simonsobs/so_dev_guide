@@ -189,7 +189,6 @@ the C++ library.
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
 .. _google style: https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings
 .. _napoleon plugin: https://sphinxcontrib-napoleon.readthedocs.io/en/latest/
-.. _Why You Shouldn't Use "Markdown" for Documentation: http://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/
 
 
 C/C++

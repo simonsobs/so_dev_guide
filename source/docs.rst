@@ -23,11 +23,20 @@ documentation:
 - readthedocs: This is an online service that integrates with github
   and sphinx to serve web versions of documentation.
 
+sphinx
+------
+
 Attention should be paid that the documentation render properly for
 the following targets:
 
 - html
 - latexpdf
+
+For html output, there are a number of different themes available, out
+of the box.  Preferences will vary but I suggest that you change the
+``html_theme`` setting away from the default of ``alabaster`` to one
+of ``bizstyle`` (left sidebar), ``sphinxdoc`` (right sidebar), or
+``haiku`` (cleanest look, with no sidebar).
 
 
 Plain-text documentation
@@ -40,3 +49,5 @@ Documentation`_).
 
 Wrap paragraphs at 80 characters.
 
+.. _Why You Shouldn't Use "Markdown" for Documentation:
+   http://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/
