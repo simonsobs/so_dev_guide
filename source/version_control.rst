@@ -1,6 +1,6 @@
-########################
+========================
 Version Control for Code
-########################
+========================
 
 This section deals with tools and practices for version control of
 code.  It does not cover version and provenance tracking of data,

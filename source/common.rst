@@ -1,6 +1,6 @@
-#####################################
+=====================================
 Common Standards for Code and Process
-#####################################
+=====================================
 
 This section deals with code formatting and multi-user work flow that
 is common to all SO activities.

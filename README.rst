@@ -44,3 +44,28 @@ version.py.
 
 .. _versioneer: https://github.com/warner/python-versioneer
 
+
+Parts, chapters, sections
+-------------------------
+
+The guide is organized into parts (currently 2).  Each part has its
+own table-of-contents listing, in index.rst.  Each chapter is in a
+separate rst files.  The sphinx rst processor will automatically
+detect a hierarchy of section markup, in any given file.  If possible
+use only = and -, since this is the most pleasing in raw text.  I
+propose the following ordering::
+
+  ==============================
+  H1 Header (chapter, mandatory)
+  ==============================
+
+  --------------------
+  H2 Header (optional)
+  --------------------
+
+  H3 Header
+  =========
+
+  H4 Header
+  ---------
+

@@ -3,10 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
+==================
 SO Developer Guide
 ==================
 
-==============
 General Advice
 ==============
 
@@ -19,7 +20,6 @@ General Advice
    version_control
    docs
 
-============================
 Special Guidance for Domains
 ============================
 
@@ -28,5 +28,5 @@ Special Guidance for Domains
    :caption: Contents:
 
    daq
-   tod
-   analysis
+   pwg
+   awg
