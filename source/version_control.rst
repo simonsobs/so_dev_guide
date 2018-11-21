@@ -124,3 +124,37 @@ spectrum:
     - has a large number of developers or a large user base.
 
 
+Guideline: git Commit Messages
+-------------------------------
+
+Well crafted git commit messages improve the quality of a repository's history.
+They improve readability and communicate the context of a change to other
+developers. The author of `this blog post`__ put it best when he wrote:
+
+.. _how_to_write_a_git_commit_message: https://chris.beams.io/posts/git-commit/
+__ how_to_write_a_git_commit_message_
+
+    A project’s long-term success rests (among other things) on its
+    maintainability, and a maintainer has few tools more powerful than [their]
+    project’s log. It’s worth taking the time to learn how to care for one
+    properly.
+
+The same author proposes the following seven rules for writing a great git
+commmit message, which we suggest you follow:
+
+#. Separate subject from body with a blank line
+#. Limit the subject line to 50 characters
+#. Capitalize the subject line
+#. Do not end the subject line with a period
+#. Use the imperative mood in the subject line
+#. Wrap the body at 72 characters
+#. Use the body to explain what and why vs. how
+
+Rules 1-5 focus on the title of the commit message, which is often presented
+when using certain other git commands (i.e. ``git rebase -i``, ``git log
+--oneline``) or even the GitHub interface (i.e. the latest commit title
+associated with each file is displayed next to the file). Since it is used so
+widely we emphasize following especially rules 1 and 2.
+
+| The Pro Git book recommends very similar guidelines:
+| https://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines
