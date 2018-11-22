@@ -1,6 +1,9 @@
-========================
-Version Control for Code
-========================
+======================
+Version Control System
+======================
+
+Overview
+========
 
 This section deals with tools and practices for version control of
 code.  It does not cover version and provenance tracking of data,
@@ -9,6 +12,9 @@ meta-data, or analysis products.
 
 git and github
 ==============
+
+.. todo:: Separate git (how to use git) and github (how SO uses
+          github).
 
 We recommend the use of git for source code tracking.  SO has as an
 institutional account on github (https://github.com/simonsobs/), which

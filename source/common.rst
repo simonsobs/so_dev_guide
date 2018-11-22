@@ -6,8 +6,12 @@ This section deals with code formatting and multi-user work flow that
 is common to all SO activities.
 
 
-Licensing
-=========
+Copyright, Licensing, and Open Source
+=====================================
+
+.. todo:: Distinguish between these three things and recommend an
+          approach for each.
+
 
 Clear licensing protects authors, their employers, and the
 collaboration.
@@ -29,13 +33,6 @@ to the code.
 In cases where extensive reformatting `is` necessary, commits carrying
 the reformatting must not also include any changes to the
 functionality or interface.
-
-
-Documentation
-=============
-
-More discussion of documentation can be found in the
-:doc:`Documentation page <docs>`.
 
 
 Release Numbering
@@ -158,4 +155,5 @@ current version available on PyPI, 0.18 (dated Jan. 1 2017).  Once
 versioneer has been "set up" on the code, the file versioneer.py in
 the root of the source tree is all you need; so your package won't
 depend, for the user, on this bleeding edge version of versioneer.)
+
 
