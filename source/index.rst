@@ -19,7 +19,9 @@ General Advice
    common
    version_control
    docs
-
+   python
+   cpp
+   
 Special Guidance for Domains
 ============================
 
