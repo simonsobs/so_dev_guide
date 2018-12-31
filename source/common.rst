@@ -6,22 +6,6 @@ This section deals with code formatting and multi-user work flow that
 is common to all SO activities.
 
 
-Copyright, Licensing, and Open Source
-=====================================
-
-.. todo:: Distinguish between these three things and recommend an
-          approach for each.
-
-
-Clear licensing protects authors, their employers, and the
-collaboration.
-
-SO will likely have a variety of public and private repositories.  It
-is likely that public code will be licensed in an open source model.
-We should pick a license soon and start pasting that on the top of all
-the source files.
-
-
 Grandparent clause
 ==================
 

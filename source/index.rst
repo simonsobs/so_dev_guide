@@ -16,6 +16,7 @@ General Advice
    :caption: Contents:
 
    intro
+   copyright
    common
    version_control
    docs
