@@ -2,6 +2,10 @@
 Copyright, Licensing, etc.
 ==========================
 
+.. warning:: The policies described in this chapter need to be
+             approved a high level.  Until that happens, do not take
+             any drastic actions based on the text below!
+
 Introduction
 ============
 
