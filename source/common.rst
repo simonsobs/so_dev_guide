@@ -125,7 +125,21 @@ To get versioneer operating on your python project, do the following:
      $ python -c 'import mylibname; print (mylibname.__version__)'
      0.4.0+2.g13ed14d.dirty
 
-5. All you need to do to bump the version number is to tag the
+5. (Optional) If you are using Sphinx to build documentation for your project
+   you can have Sphinx determine the project version number from versioneer by
+   importing ``__version__`` in your ``conf.py`` file::
+
+    from mylibname import __version__ as mylibname_version
+
+   You should then change the ``version`` and ``release`` fields to
+   ``mylibname_version``::
+
+    # The short X.Y version
+    version = mylibname_version
+    # The full version, including alpha/beta/rc tags
+    release = mylibname_version
+
+6. All you need to do to bump the version number is to tag the
    relevant commit, with a tag that matches the right format (in this
    example, something like v0.4.0).  The github "releases" feature
    allows you to do this, and to see all the tags.
