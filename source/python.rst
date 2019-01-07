@@ -41,17 +41,71 @@ errors or lines, in cases where it is necessary to violate the PEP8.
 Documentation of Code
 =====================
 
-For docstrings, SO will adopt the `google style`_.  This choice
-accomplishes the following goals:
+docstrings
+----------
 
-- compact and nicely formatted in the code itself.
-- compact and nicely formatted by python's "help" facility
-- recognized by sphinx auto-generated documentation, if one activates
-  the `napoleon plugin`_.
+docstrings are blocks of text located near the tops of python modules,
+classes, and functions.  These blocks are often extracted and
+published separately from the code, as a part of the documentation for
+how to use the code.
+
+Simple functions may be documented with one-liners, in plain English.
+For example::
+
+  def get_hubble_constant():
+      """Returns the Hubble Constant of this Universe, in km/s/Mpc."""
+      ...
+
+When documenting a more complicated function, it is helpful to have
+standards for organizing and formatting important information, such as
+the expected type and meaning of each argument, the format of the
+return value, and the type and meaning of any exceptions that might be
+raised.
+
+We will accept any standard that meets the following criteria:
+
+- compact and nicely formatted text in the raw code
+- compact and nicely formatted text within Python's "help" facility
+- nicely formatted text in auto-generated documentation using Sphinx
+
+We strongly recommended that SO codes use either the `numpy
+style`_ or the `google style`_ for docstrings.  These two styles are
+very similar.  They are both supported in Sphinx, e.g. through the
+`napoleon plugin`_.
+
+**Because of the broad use of numpy style in the scientific community
+(from numpy through to astropy), we recommend the use of numpy in SO
+code.** If you think you'd rather use google style, that's probably
+fine, just be clear about it in the README or CONTRIBUTING file.
+
+
+Inline Comments
+---------------
+
+In addition to docstrings, Python code should be documented with
+comments prefixed with the # character.  Remember that people reading
+the comments will also be reading the code -- so the comments should
+clarify and elucidate, rather than simply re-state what is already
+obvious from the code.  The code already says *what* is happening; use
+the comments to say *why* those things are happening.
+
+Here's a perhaps unnecessary inline comment::
+
+  # Loop through all catalogs.
+  for catalog in catalogs:
+    catalog.mask_red_galaxies()
+
+Here's an example of a helpful explanatory comment::
+
+  # Mask the red galaxies, because we will later assume that all galaxies are blue.
+  for catalog in catalogs:
+    catalog.mask_red_galaxies()
 
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
 .. _google style: https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings
+.. _numpy style: https://docs.scipy.org/doc/numpy-1.15.0/docs/howto_document.html
 .. _napoleon plugin: https://sphinxcontrib-napoleon.readthedocs.io/en/latest/
+
 
 Implementation Choices
 ======================
