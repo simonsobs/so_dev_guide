@@ -8,12 +8,25 @@ Overview
 Version Support
 ===============
 
-.. todo:: Invent a basis for setting what minor version of python3
-          should be supported at any given time.
+All SO code should target Python 3, rather than Python 2.  It is
+possible to write code that works in both Python 3 and Python 2.7;
+that support decision should be made within each repository.  The
+general computing community has considered Python 2 to be deprecated
+for several years; key scientific packages are now well-supported on
+Python 3 and there are no strong reasons to resist the move to 3.x.
 
-Python code should be developed to work with python3, backwards
-compatible to version 3.3 if possible.  Compatibility with python 2.7
-is not required but is encouraged where possible.
+Developers must not assume that all users will have access to the
+latest and greatest versions of Python and key scientific packages.
+We recommend that packages always support a Python version that is at
+least 3 years old.  **Python 3.5 was released on September 13, 2015,
+and is thus the earliest Python version that needs to be supported by
+all code.** Certain DAQ or super-computing environments may have
+additional constraints; these can be explained in the code README or
+CONTRIBUTING instructions.
+
+Cloud-based unit-testing frameworks typically support a variety of
+Python versions; complete test coverage and the use of such services
+is a good way to validate your code across multiple versions.
 
 Style
 =====
