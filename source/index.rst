@@ -31,5 +31,6 @@ Special Guidance for Domains
    :caption: Contents:
 
    daq
+   instrument
    pwg
    awg
