@@ -6,18 +6,79 @@ This section deals with code formatting and multi-user work flow that
 is common to all SO activities.
 
 
-Grandparent clause
-==================
+Style and Technique
+===================
 
-Large bodies of code that we absorb into SO may have incompatible
-standards.  Large reformatting jobs should not be undertaken unless
-there is an immediate intention to then make extensive modifications
-to the code.
+In this document, we'll use "Style" to refer to the appearance of
+source code, by which we mean code formatting issues that do not
+affect the function of the code.  "Style" includes rules for how much
+whitespace should be used in different situations, how long lines of
+source code should be, and how one should name identifiers such as
+variables and classes.
 
-In cases where extensive reformatting `is` necessary, commits carrying
-the reformatting must not also include any changes to the
-functionality or interface.
+In contrast, "Technique" refers to the usage of programming language
+features to accomplish some desired programmatic behavior.  For
+example, a requirement that "global variables should be avoided unless
+necessary" is a statement about technique; "global variable
+identifiers should be in all caps" is a statment about style.
 
+Detailed style and technique recommendations for specific programming
+languages are presented in subsequent chapters.  We will just touch on
+a couple of general points here.
+
+Style is not Personal
+---------------------
+
+The underlying goal of style recommendations is to improve
+readability, so that programmers can understand and modify each
+other's work efficiently.  It is helpful if brains and source code
+editors aren't struggling due to unfamiliar formatting choices.  Style
+rules are thus about code maintainability.
+
+Here are things to keep in mind, about code maintainance in SO:
+
+- The importance of maintainability, and thus of style, varies with
+  context.  For example, one-off data analysis scripts do not need to
+  be held to the same commenting and technique standards as core
+  instrument control codes, even though both might be written in
+  Python.
+- In many cases we will derive our code from pre-existing works, that
+  may or may not follow some reasonable, established style.
+  Large-scale reformatting jobs are probably not worth the effort,
+  unless substantial modification of the code will then be
+  undertaken.
+- When a programmer is reviewing new contributed code changes, and
+  trying to understand how the behavior of the code is going to be
+  affected, then stylistic reformatting is actually quite distracting
+  (even if it improves the style, in some sense).  Thus, work that
+  makes substantial "style" improvements should be totally separate
+  from work that makes changes to behavior or function.  In practice
+  this means that style fixes and feature work should be in separate
+  git commits, if not separate pull requests.
+
+Behind every great writer is a great editor
+-------------------------------------------
+
+If you're having trouble keeping your code compliant with the
+recommendations here, perhaps you should be using a different source
+code editor.  The formatting guidelines in this document are designed
+to be easily activated in the editors ``emacs`` and ``vim``.  If you
+often need to code in a text-only terminal (rather than a graphical
+desktop environment), then you should probably learn one of these
+editors.  If you want to be a cool hacker, you should find out which
+of these editors is currently most popular, and then learn the other
+one.
+
+If you think the graphical desktop environment is more your style,
+there are many powerful editors that can be configured to respect
+certain style guidelines.  Find one.  (``vim`` and ``emacs`` can
+be run in some graphical environments, and integrate with the
+desktop's pretend that they are graphical, but that's not really their selling
+point.)
+
+But if you're using ``nano`` (on the command line) or ``Notepad`` (in
+your Windows), you will probably become very frustrated with them,
+and wish you had invested the time in a smarter editor.
 
 Release Numbering
 =================
