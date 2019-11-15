@@ -312,6 +312,20 @@ In order to be added to the SO github Organization, you must first
 have a general github.com account; then you must email one of the SO
 github Organization Admins (see link above).
 
+If your username is not similar to your real name, it will be
+difficult for collaborators to find you and work with you on github.
+One way to improve this is to include your full name, or your first
+name and last initial, in your github profile.
+
+Your membership in the SO github Organization can be Public or
+Private.  If Public, this means that anyone on the internet will be
+able to see that your github username is associated with SO.  If
+Private, then only other Organization members will see this fact.  By
+default your membership is Private.  To set it Public, make sure
+you're logged into your github account and then go to
+github.com/simonsobs/people.  Find your username in the list, and
+change the visibility setting from "Private" to "Public."
+
 User Privileges
 ```````````````
 
