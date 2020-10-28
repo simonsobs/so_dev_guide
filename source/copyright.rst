@@ -189,7 +189,6 @@ repository is being newly created, and is kept private during initial
 setup but then quickly (within a few days) made public.  In such
 cases, consultation with the DM/TAC/TC is not necessary.
 
-
 Acknowledgment Requirements
 ---------------------------
 
@@ -197,11 +196,13 @@ In some cases, developers within SO may want to impose additional
 restrictions or requirements on the use of code they have produced.
 For example, it is not uncommon to see a statement of the form "If
 results from this code are used in a scientific publication, then
-*some text* should be included in the acknowledgments, and *some
-paper* must be cited."  Such additional license requirements may not
-be compatible with "Openly Contributed Code", and the TAC/DM/TC should
-be contact prior to adding such clauses to a license.
+*some text* must be included in the acknowledgments, and *some
+paper* must be cited."
 
+Some contributors may object to having their work encumbered by a
+strong citation requirement clause.  So such requirements should not
+be applied without consensus among the contributing developers.  The
+DM/TAC/TC should be consulted if consensus cannot be reached.
 
 External Collaboration Opportunities
 ------------------------------------
@@ -236,11 +237,18 @@ include the date of all changes.  For example the date may ultimately
 be something like "2018-2020, 2022."  It is not necessary or helpful
 to update the date string unless actual changes are made.
 
-The vagueness of "Members of the ... collaboration" would probably be a
-concern if the code were not openly licensed.  The details of exactly
-who owns the copyright to each line of code could probably be figured
-out; but it's largely irrelevant since we're making all those lines
-freely available.
+Note that we point the reader elsewhere to learn about the license
+conditions.  Although one often encounters codes where a complete copy
+of the license is stated at the top of every source file, this is
+awkward and not legally necessary, so let's not do it unless we have
+code where individual files are likely to be extracted and somehow
+misused.
+
+The vagueness of *"Members of the ... collaboration"* would probably
+be a concern if the code were not openly licensed.  The details of
+exactly who owns the copyright to each line of code could probably be
+figured out; but it's largely irrelevant since we're making all those
+lines freely available.
 
 Declaring the License
 ---------------------
@@ -252,15 +260,10 @@ conditions.  The best way to do this is to have a text file called
 licensing information (as is done, for example, `here
 <https://github.com/mozilla/gecko-dev/blob/master/LICENSE>`_).
 
-Although one often encounters codes where a complete copy of the
-license is stated at the top of every source file, this is awkward and
-not legally necessary... let's not do it unless we have code where
-individual files are likely to be extracted and somehow mis-used.
+Inherited Licenses
+------------------
 
-Imported Licenses
------------------
-
-If you are importing source code from another project into an SO
+If you have introduced source code from another project into an SO
 repository, please endeavor to respect the licensing conditions of
 that code.  This means:
 

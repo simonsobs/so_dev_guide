@@ -130,11 +130,18 @@ Do not commit garbage
 `````````````````````
 
 Do not add temporary files, backup files, or compilation products to a
-repository.  Always run ``git status`` before you run ``git commit``.
-This will tell you about the changes you are about to commit.  You
-will generally run into trouble if you use the ``git add -a``
-shortcut... unless you have a well-crafted `.gitignore file
-<https://git-scm.com/docs/gitignore>`__ file in place!
+repository!  When preparing to commit code, run ``git status``
+frequently to see what files are present, modified, and staged for
+commit.  Commands like ``git add *`` and ``git commit -a`` should not
+be used unless you've inspected ``git status`` output to confirm that
+no garbage will be included by the wildcards.
+
+A git repository can be set up to automatically exclude many standard
+temporary files and directories from wildcard operations.  See the
+documentation on the `.gitingore file
+<https://git-scm.com/docs/gitignore>`__.  Note that github makes
+`templates <https://github.com/github/gitignore>`__ available for many
+different programmaing languages.
 
 Do not mix code and data in a repository
 ````````````````````````````````````````
