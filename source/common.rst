@@ -294,23 +294,41 @@ everything else.
 
 Our home on github is https://github.com/simonsobs/.
 
-Names and email addresses of "Organization Admins" will be kept
-up-to-date on this wiki page:
-http://simonsobservatory.wikidot.com/main:wiki-mail .  These admins
-have broad power to create and modify teams, and to change repository
-settings.
+Administration
+``````````````
+
+Administration of the Simons Observatory github organization is
+supervised by the Data Manager, with many administrative powers
+delegated to a set of Organization Admins.  There is one Organization
+Admin for each of three subsystems: "Science" (covering the work of
+the AWGs), "Pipeline" (covering the work of the PWGs) and "Instrument"
+(covering the work of the TWGs).  Contact information for the current
+admins will be kept up-to-date on this wiki page:
+http://simonsobservatory.wikidot.com/main:wiki-mail .
+
+The primary role of Organization Admins is to add and remove members
+from the organization, to configure Teams, and to change repository
+settings in cases where this is not available to the Repository Admin
+(see below).
 
 Each repository also has one or more "Repository Admin", who has a
 high level of control over that repository.  If you want to contact a
 Repository Admin, and you are not sure who that is... ask an
-Organization Admin to help.
+Organization Admin to help.  Repository admins should take care to
+exercise their privileges only within the rules described here.  For
+example, it might be possible for an admin to make a private
+repository be public; but that power is specifically restricted as
+described in :ref:`The Covenant of the SO Github` (and below).  The
+Repository Admin will also be the contact person for issues relating
+to "Openly Contributed Code" compliance.
+
 
 User Accounts
 `````````````
 
 In order to be added to the SO github Organization, you must first
-have a general github.com account; then you must email one of the SO
-github Organization Admins (see link above).
+have a general github.com account; then you must email one of the
+Organization Admins (see link above).
 
 If your username is not similar to your real name, it will be
 difficult for collaborators to find you and work with you on github.
@@ -326,13 +344,19 @@ you're logged into your github account and then go to
 github.com/simonsobs/people.  Find your username in the list, and
 change the visibility setting from "Private" to "Public."
 
+A list of users, with email addresses and full names, will be
+maintained by the Data Manager and periodically reviewed against
+membership lists.  A user who is no longer an SO member may be removed
+from the organization.
+
+
 User Privileges
 ```````````````
 
 By default, all Organization users will have "Read" access on all SO
 repositories.  In order to get "Write" access to a repository, which
 will allow you to make commits to the repo, a Repository Admin must
-add you.
+add you (possibly using a Team).
 
 Users are likely to have Read access to many "private" repositories,
 including ones that contain some sensitive information (such as
@@ -379,7 +403,10 @@ means that you can tie certain items to github Issues, or assign items
 to particular github users.  As work progresses you can move items
 from one list (say, "to-do") to another list ("done").  github
 projects can be defined at the Organization level, or can be attached
-to a particular repository.
+to a particular repository.  Groups such as TWGs and PWGs are
+encouraged to maintain a single, organization-level project page as a
+way to communicate their plans and activity to the broader SO
+community.
 
 *Wiki*: github repositories can host a wiki.  This could be used to
 provide supplementary documentation, such as work-arounds for recently

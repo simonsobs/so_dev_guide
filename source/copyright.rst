@@ -26,9 +26,12 @@ recommends certain approaches that will help protect the rights of
 code contributors as well as the needs of the observatory.
 
 The discussions and recommendations in the sections below are intended
-to apply to all "mission-critical" code, by which we mean all software
-developed or contributed by collaboration members in order to meet the
-scientific and related goals of the SO collaboration.
+to apply broadly to code that is important for the timely success of
+the Observatory.  The Data Manager (DM), the TAC (Theory and Analysis
+Committee), and the TC (Technical Committee) are the ultimate
+authorities for enforcing these standards as they deem appropriate,
+and for resolving disputes that involve shared collaboration resources
+(such as the SO Github organization).
 
 At the very end of this section you will find instructions for how to
 record copyright and license information in your codebase.
@@ -37,7 +40,7 @@ record copyright and license information in your codebase.
 The Covenant of the SO Github
 =============================
 
-We will use the designation "Openly Contributed Code" to identify
+We will use the designation "Openly Contributed Code" to describe
 repositories that meet a certain desired standard for being
 unencumbered by restrictive licenses.  Such designation is desirable
 to Simons Observatory, because open licensing is an assurance that
@@ -47,8 +50,8 @@ contributors, because the open license gives them access to their own
 contributions as well as the contributions that others have made to
 the repository.
 
-The items below have been numbered to make them look like important
-rules.
+The following points describe how we will work with Openly Contributed
+Code in Simons Observatory.
 
 1. We define "Openly Contributed Code" to be source code that is
    created for or made available to the Simons Observatory through a
@@ -72,13 +75,16 @@ rules.
 4. In some cases, an Openly Contributed Code repository may be in the
    "private" state on github.  The code in private repositories should
    be considered as proprietary to SO, notwithstanding the Open
-   License stated therein.  The power to make such code public is held
-   by certain designated people in the Simons Observatory
-   organization, namely the Data Manager and the TAC.  Individual
-   contributors may have the right to make their own contributions
-   public, because they hold the copyright.  But their contribution to
-   the private repository, along with the presence of an Open License,
-   does not give them the right to make the whole thing public.
+   License stated therein, and may not be treated as public code nor
+   freely shared outside of the collaboration.  Decisions on when and
+   how to take codes from the private state to the public state will
+   be made by the DM/TAC/TC.  In other words, each contributor to a
+   private repository does not gain the authority to make public all
+   of the contributions to that repository; rather, each contributor
+   acknowledges that the decision to make the code public lies with
+   the DM/TAC/TC.  The responsible authorities will endeavor to
+   respect the wishes of the authors, while protecting the mission of
+   the Observatory.
 
 
 Discussion
@@ -89,7 +95,7 @@ Importance of Licensing and Copyright
 
 Mission-critical SO source code must be clearly licensed so that
 there is no risk of loss of access for the duration of the project.
-SO must have sufficient rights to use and modify such code without
+SO must have sufficient rights to use, modify, and release such code without
 significant burden (such as licensing fees or inappropriate
 attribution requirements).  This condition is likely to be satisfied,
 provided that any of the following is true:
@@ -112,14 +118,14 @@ Copyright
 
 The person or entity that holds the "copyright" of a work may
 determine how the work may be used by other entities.  It is *not*
-necessary for SO to hold the copyright of all critical code.  Rather,
-it is only necessary that SO have sufficient license to use and modify
-the code.  For simplicity, **we encourage developers who are funded by
-SO, or who are otherwise free to do so, to grant copyright of their
-code to "Simons Observatory Collaboration"**.  But it is also
-completely acceptable for developers to hold copyright of their code
-individually, or to assign copyright to their employers (some
-universities and funding bodies may require this).
+necessary for some Simons Observatory legal entity (such as the
+project office or the Foundation) to hold the copyright of all
+critical code.  Rather, it is only necessary that collaboration
+members have sufficient license to use, modify, and release the code.
+For simplicity, we recommend that each contributor (or in some cases
+their employer) retain the copyright of their contributions, and
+instead grant continuing use of those contributions to the Simons
+Observatory Collaboration through an open license.
 
 In the context of source code, the copyright holder has the sole right
 to license the code for use by others; the importance of the license
@@ -164,8 +170,7 @@ github organization, it is considered to be in a protected,
 proprietary state, even though it may contain licensing text that
 suggests it is Open Source software.  SO members must not make such
 code public, nor distribute it to members outside the collaboration,
-except as directed by the appropriate authorities (Data Manager or
-SOTAC).
+except as directed by the appropriate authorities (DM/TAC/TC).
 
 Some SO repositories will be private, initially, and become public
 later.  The transition to public should occur only once all the
@@ -176,8 +181,13 @@ following conditions have been met:
   be violated by such publication (i.e., ensure that all license
   requirements for imported codes have been met).
 * The primary developers of the code have been consulted.
-* The Data Manager (for DAQ and PWG codes) or the SOTAC (for AWG
-  codes) agree to the change.
+* The Data Manager (for DAQ and PWG codes), the TAC (for AWG
+  codes), or the TC (for TWG codes) agree to the change.
+
+An exception to the above procedure is allowed for the case when a
+repository is being newly created, and is kept private during initial
+setup but then quickly (within a few days) made public.  In such
+cases, consultation with the DM/TAC/TC is not necessary.
 
 
 Acknowledgment Requirements
@@ -189,9 +199,8 @@ For example, it is not uncommon to see a statement of the form "If
 results from this code are used in a scientific publication, then
 *some text* should be included in the acknowledgments, and *some
 paper* must be cited."  Such additional license requirements may not
-be compatible with "Openly Contributed Code", and the SOTAC and/or
-Data Manager should be contact prior to adding such clauses to a
-license.
+be compatible with "Openly Contributed Code", and the TAC/DM/TC should
+be contact prior to adding such clauses to a license.
 
 
 External Collaboration Opportunities
@@ -219,7 +228,7 @@ Stating Copyright
 Near the top of every source code file, state the copyright and
 mention the license.  This should look something like::
 
-  # Copyright (C) 2018 Simons Observatory and individual contributors.
+  # Copyright (C) 2018 Members of the Simons Observatory collaboration.
   # Please refer to the LICENSE file in the root of this repository.
 
 If you later make edits to this file, update the copyright year to
@@ -227,7 +236,7 @@ include the date of all changes.  For example the date may ultimately
 be something like "2018-2020, 2022."  It is not necessary or helpful
 to update the date string unless actual changes are made.
 
-The vagueness of "and individual contributors" would probably be a
+The vagueness of "Members of the ... collaboration" would probably be a
 concern if the code were not openly licensed.  The details of exactly
 who owns the copyright to each line of code could probably be figured
 out; but it's largely irrelevant since we're making all those lines
