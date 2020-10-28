@@ -325,7 +325,7 @@ Organization Admin to help.  Repository admins should take care to
 exercise their privileges only within the rules described here.  For
 example, it might be possible for an admin to make a private
 repository be public; but that power is specifically restricted as
-described in :ref:`The Covenant of the SO Github` (and below).  The
+described in :ref:`Policy on Openly Contributed Code` (and below).  The
 Repository Admin will also be the contact person for issues relating
 to "Openly Contributed Code" compliance.
 
@@ -503,8 +503,8 @@ than in, say, the git book.
      Repository Administrator on this.
 
    
-Forking (what is it good for)
-`````````````````````````````
+Forking vs. Branching
+`````````````````````
 
 You may find advice online for contributing to Open Source codes that
 begins with the recommendation that you create a fork of the

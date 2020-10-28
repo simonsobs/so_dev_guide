@@ -10,8 +10,8 @@ Copyright, Licensing, etc.
 Introduction
 ============
 
-If you want to skip to the important parts, they are `The Covenant of
-the SO Github`_ and `Practical Recommendations`_.
+If you want to skip to the important parts, they are `Policy on Openly
+Contributed Code`_ and `Copyright and License Cookbook`_.
 
 Because of the complex structure of private entities, academic
 institutions, and individuals working on SO code, the collaboration
@@ -37,8 +37,8 @@ At the very end of this section you will find instructions for how to
 record copyright and license information in your codebase.
 
 
-The Covenant of the SO Github
-=============================
+Policy on Openly Contributed Code
+=================================
 
 We will use the designation "Openly Contributed Code" to describe
 repositories that meet a certain desired standard for being
@@ -220,8 +220,8 @@ even if the SO point of contact is already happy to provide assistance
 without quid pro quo.)
 
 
-Practical Recommendations
-=========================
+Copyright and License Cookbook
+==============================
 
 Stating Copyright
 -----------------
