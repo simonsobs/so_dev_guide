@@ -1,7 +1,9 @@
 "Simons Observatory Developer Guide" Developer Guide
 ====================================================
 
-This is the source document for the Simons Observeratory Developer Guide.
+This is the source document for the Simons Observeratory Developer Guide. The
+guide is hosted on simons1 here:
+https://simons1.princeton.edu/docs/so_dev_guide/html/
 
 To render the source files into nicely formatted html or PDF versions,
 you will need sphinx.  This can be obtained through most linux package
