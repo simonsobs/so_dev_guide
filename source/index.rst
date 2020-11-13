@@ -18,7 +18,6 @@ General Advice
    intro
    copyright
    common
-   version_control
    docs
    python
    cpp

@@ -49,6 +49,7 @@ todo_include_todos = True
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autosectionlabel',
     'sphinx.ext.githubpages',
     'sphinx.ext.todo',
 ]
@@ -145,6 +146,7 @@ latex_documents = [
 ]
 
 latex_toplevel_sectioning = 'part'
+latex_show_urls = 'footnote'
 
 # -- Options for manual page output ------------------------------------------
 
