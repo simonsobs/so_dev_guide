@@ -21,7 +21,7 @@ sys.path.append('.')
 # -- Project information -----------------------------------------------------
 
 project = 'SO Developer Guide'
-copyright = '2018, Simons Observatory Collaboration'
+copyright = '2018-2020, Simons Observatory Collaboration'
 author = 'Simons Observatory Collaboration'
 
 # Load version from versioneer.
@@ -87,7 +87,7 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'bizstyle'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
