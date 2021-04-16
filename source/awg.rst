@@ -3,7 +3,7 @@ Special Guidance: Analysis Working Groups
 =========================================
 
 .. warning:: The policies described in this chapter need to be
-             approved a high level (including the Publication Panel and the Planning Committee).
+             approved at a high level (including by the Publication Panel and the Planning Committee).
 	     Until that happens, do not take
              any drastic actions based on the text below!
 
@@ -37,7 +37,7 @@ Codes on SO Github
 
 If a code repository is hosted on the SO Github and is publicly visible, then it may be used by anyone (e.g. the public, ACT, Polarbear, other SO members) without requiring explicit permission, if the license allows this. The licenses that we recommend (`BSD 2-Clause License`_ or `MIT License`_) do allow this.
 
-If a hosted code is private, then it is only visible to Simons Observatory members. Explicit permission must be requested from the developers of the code and TAC must be informed if SO members would like to use a private code in a non-SO project (e.g. a theory paper, ACT or Polarbear analysis), even if the license states otherwise.
+If a hosted code is private, then it is only visible to Simons Observatory Github members. Explicit permission must be requested from the developers of the code and TAC must be informed if SO members would like to use a private code in a non-SO project (e.g. a theory paper, ACT or Polarbear analysis), even if the license states otherwise.
 
 
 .. _`ASCL`: https://ascl.net/
