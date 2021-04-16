@@ -31,10 +31,12 @@ The general recommendation that codes be publicly visible applies to core codes,
 Codes on SO Github
 ==================
 
-If a code repository is hosted on the SO Github and is publicly visible, then it may be used by anyone (e.g. the public, ACT, Polarbear) without requiring explicit permission, unless the license somehow forbids this.
+If a code repository is hosted on the SO Github and is publicly visible, then it may be used by anyone (e.g. the public, ACT, Polarbear) without requiring explicit permission, if the license allows this. The licenses that we recommend (`BSD 2-Clause License`_ or `MIT License`_) do allow this.
 
-If a hosted code is private, then it is only visible to Simons Observatory members. Explicit permission must be requested from the developers of the code and TAC must be informed if SO members would like to use a private code in a non-SO project (e.g. a theory paper, ACT or Polarbear analysis).
+If a hosted code is private, then it is only visible to Simons Observatory members. Explicit permission must be requested from the developers of the code and TAC must be informed if SO members would like to use a private code in a non-SO project (e.g. a theory paper, ACT or Polarbear analysis), even if the license states otherwise.
 
 
 .. _`ASCL`: https://ascl.net/
 .. _`JOSS`: https://joss.theoj.org/
+.. _`MIT License`: https://opensource.org/licenses/MIT
+.. _`BSD 2-Clause License`: https://opensource.org/licenses/BSD-2-Clause
