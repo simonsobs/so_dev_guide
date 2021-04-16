@@ -26,7 +26,7 @@ Certain codes designated as "core codes" receive special consideration and extra
 - approval should be sought from TAC before a private core code is made public
 - the code will be periodically reviewed and inspected by TAC and/or Data Management (DM) to ensure it is well-documented, has good test coverage and can be run by multiple SO members
 
-The general recommendation that codes be publicly viewable applies to core codes as well, though this is not a strict requirement. The TAC will maintain a wiki page that lists all AWG codes hosted on the Simons Observatory github with the core codes clearly designated.
+The general recommendation that codes be publicly visible applies to core codes, though public visibility is not a strict requirement. The TAC will maintain a wiki page that lists all AWG codes hosted on the Simons Observatory github with the core codes clearly designated.
 
 Codes on SO Github
 ==================
