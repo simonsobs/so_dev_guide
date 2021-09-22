@@ -28,7 +28,7 @@ Certain codes designated as "Core Codes" receive special consideration and extra
 
 - the code must meet the requirements of Openly Contributed code as defined in Chapter 2 (this includes that it must be hosted on the Simons Observatory Github organization, have an Open Source license and the list of Copyright owners should be truncated to a simple and broad summary such as "Members of the Simons Observatory Collaboration" to facilitate further expansion)
 - approval should be sought from TAC before a private Core Code is made public
-- the code will be periodically reviewed and inspected by TAC and/or Data Management (DM) to ensure it is well-documented, has good test coverage and can be run by multiple SO members
+- the code will be periodically reviewed and inspected by TAC, Data Management (DM) or individuals assigned by TAC and/or DM. The reviews are conducted to ensure Core Codes are well-documented, have good test coverage and can be run by multiple SO members and as such, recommendations for additional documentation and test coverage will be passed on to the developers and AWG leads. Since Core Codes may have broad application, higher standards for version tracking and interface stability may be requested by TAC/DM.
 
 The general recommendation that codes be publicly visible applies to Core Codes, though public visibility is not a strict requirement. The TAC will maintain a wiki page that lists all AWG codes hosted on the Simons Observatory Github with the Core Codes clearly designated.
 
