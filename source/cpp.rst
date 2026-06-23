@@ -125,5 +125,4 @@ least one unit test. The unit test should be in a separate file, and should be n
 use for SO as it is easy to use, represents tests a normal boolean expressions and
 also allows to benchmark code.
 
-
-
+Please refer to the Catch2 documentation for more information on how to write unit tests.
