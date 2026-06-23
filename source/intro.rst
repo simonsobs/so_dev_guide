@@ -27,10 +27,12 @@ people outside of the collaboration. Incosistent code styles makes it harder for
 contributors and users to read, understand and reuse code. A developer and style 
 guide aims to lower this friction.
 
-A style guide removes trivial decision-making from code review.  When formatting and
+A style guide removes trivial decision-making from code review. When formatting and
 naming are settled by convention, reviewers can focus on correctness, design, and
-scientific validity. It also makes automated tooling—linters, formatters, documentation 
-generators—easy to apply consistently across repositories.
+scientific validity. For this reason we require the use of source formatters. A diff
+produced by a formatter-compliant change contains only the actual logical edit, not
+incidental whitespace, indentation, or line-wrapping noise, keeping pull requests
+small, focused, and easier on maintainers to review.
 
 A developer guide goes further: it captures the institutional knowledge that experienced
 SO developers carry in their heads.  Which testing framework do we use?  How should a

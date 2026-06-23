@@ -13,7 +13,7 @@ different from modern C++ (C++11 and later). As a result, these guidelines will
 not require old codebase to be reformatted, but will require new code to follow a 
 modern C++ style and formatting.
 
-Having said that refactoring that updates old code to modern C++ is encouraged.
+Though not required, if time permits, refactoring old code to modern C++ is encouraged.
 
 
 Version Support
@@ -37,7 +37,7 @@ Style
 
 Although there are many C++ style guides, and there is no single "correct" way to 
 write C++, we will adopt a modified Google C++ style guide. For any rule not explicity
-specified in this document, please refer to the Google (C++ style guide)[https://google.github.io/styleguide/cppguide.html]
+specified in this document, please refer to the Google [C++ style guide](https://google.github.io/styleguide/cppguide.html)
 
 In addition to the style description, we will provide a config file for clang-format
 that can automatically format code. In case you find yourself working on code that is
@@ -51,7 +51,7 @@ Indentation
 Indentation is one of the aspects of code formatting that is important to be consistent
 across codebases, especially since we use multiple languages.
 
-We will use 4 spaces as the intendantion for C++.
+We will use 2 or 4 spaces as the intendantion for C++.
 
 Tabs are not allowed for indentation.
 
@@ -113,6 +113,17 @@ For example:
 Unit Testing
 ============
 
+Unit testing is an important part of software development. It helps ensure that the code
+is working as expected, helps catch bugs early and verify that the code is not regressing
+when feature or changes are made. Testing suites are only expected to grow over time.
 
-https://github.com/catchorg/Catch2
+Due to the importance of unit testing, we will require that all new code be accompanied by at
+least one unit test. The unit test should be in a separate file, and should be named
+`<name>_test.cpp`, where `<name>` is the name of the file being tested.
+
+[Catch2](https://github.com/catchorg/Catch2) is the unit testing framework for C++ we will
+use for SO as it is easy to use, represents tests a normal boolean expressions and
+also allows to benchmark code.
+
+
 
