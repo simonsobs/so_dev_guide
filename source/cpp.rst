@@ -10,7 +10,7 @@ performance-critical code. C++ is a complex language and very permissive on form
 
 In addition, formatting and styling from older standards (C++98, C++03) is very
 different from modern C++ (C++11 and later). As a result, these guidelines will
-not require old codebase to be reformatted, but will require new code to follow a 
+not require old codebases to be reformatted, but will require new code to follow a 
 modern C++ style and formatting.
 
 Though not required, if time permits, refactoring old code to modern C++ is encouraged.
@@ -35,14 +35,15 @@ documented in the repository of the software.
 Style
 =====
 
-Although there are many C++ style guides, and there is no single "correct" way to 
-write C++, we will adopt a modified Google C++ style guide. For any rule not explicity
-specified in this document, please refer to the Google [C++ style guide](https://google.github.io/styleguide/cppguide.html)
+Although there are many C++ style guides, and there is no single "correct" way to
+write C++, we adopt a modified Google C++ style guide. For any rule not explicitly
+specified in this document, please refer to the `Google C++ style guide`_.
 
-In addition to the style description, we will provide a config file for clang-format
+In addition to the style description, we provide a :ref:`config file for clang-format <cpp-clang-format-config>`
 that can automatically format code. In case you find yourself working on code that is
 not formatted according to the style, you can maintain the existing style. However,
-we higlhy recommend to format the code in a different branch and submit a pull request.
+when you are formatting the code, we highly recommend to use a branch which only contains
+the formatting changes and submit a pull request.
 
 
 Indentation
@@ -51,9 +52,10 @@ Indentation
 Indentation is one of the aspects of code formatting that is important to be consistent
 across codebases, especially since we use multiple languages.
 
-We will use 2 or 4 spaces as the intendantion for C++.
+We will use 2 or 4 spaces as the indentation for C++.
 
 Tabs are not allowed for indentation.
+
 
 Line width
 ----------
@@ -65,7 +67,7 @@ Naming Conventions
 ------------------
 
 The name of a variable, function or class is one of the most important aspects of code
-readability. It can immediately inform about the puspose of the named thing. Please avoid
+readability. It can immediately inform about the purpose of the named thing. Please avoid
 single letter names, except for loop variables, even if it is a commonly understandable
 variable.
 
@@ -77,18 +79,50 @@ We will utilize the following naming conventions:
 5. Namespaces should be in snake_case, e.g. `my_namespace`.
 
 
+Header Files
+------------
+
+All header files must guard against multiple inclusion. Use ``#pragma once`` at the
+top of the file, rather than traditional ``#ifndef``/``#define``/``#endif`` guards::
+
+  #pragma once
+
+  // header contents
+
+``#pragma once`` is supported by all compilers we target (GCC and Clang) and avoids
+the maintenance burden and risk of typos or naming collisions inherent to manually
+written include guard macros.
+
+
 Use of Language Features
 ------------------------
-  .. todo:: We will add guidelines on the use of language features, such as smart pointers, 
-    exceptions, etc. We will also provide guidelines on the use of modern C++ features
-    such as lambda functions, auto keyword, etc.
+
+Guidance on modern C++ features is already covered by the `Google C++ style guide`_, 
+and we follow it without modification.
+
+.. _cpp-clang-format-config:
+
+Clang-format Config
+-------------------
+As formatting tool, we will use clang-format. The config file for the expected formatting
+is:
+
+.. code-block:: yaml
+
+  BasedOnStyle: Google
+  ColumnLimit: 120
+  IndentWidth: 2
+
+Please copy this in `.clang-format` file in the root of your repository.
+
+Note: Indentation width can be 2 or 4 spaces, but it should be consistent across the codebase.
 
 Documentation of Code
 =====================
 Documentation of the code provides information about the code to users and developers alike.
 There are two types of documentation that are important: inline comments, and API docstrings.
 
-For comments `/*..*/` and `//` are acceptable`, but try to be consistent within the
+For comments `/*..*/` and `//` are acceptable, but try to be consistent within the
 code.
 
 For API docstrings, we will use Doxygen style comments. The block starts with `/**` and
@@ -110,6 +144,7 @@ For example:
     }
 
 
+
 Unit Testing
 ============
 
@@ -121,8 +156,10 @@ Due to the importance of unit testing, we will require that all new code be acco
 least one unit test. The unit test should be in a separate file, and should be named
 `<name>_test.cpp`, where `<name>` is the name of the file being tested.
 
-[Catch2](https://github.com/catchorg/Catch2) is the unit testing framework for C++ we will
-use for SO as it is easy to use, represents tests a normal boolean expressions and
-also allows to benchmark code.
+`Catch2`_ is the unit testing framework for C++ we will use for SO as it is easy 
+to use, represents tests as normal boolean expressions and also allows benchmarking code.
 
 Please refer to the Catch2 documentation for more information on how to write unit tests.
+
+.. _Google C++ style guide: https://google.github.io/styleguide/cppguide.html
+.. _Catch2: https://github.com/catchorg/Catch2
