@@ -161,5 +161,71 @@ to use, represents tests as normal boolean expressions and also allows benchmark
 
 Please refer to the Catch2 documentation for more information on how to write unit tests.
 
+
+Automatic Semantic Versioning
+==============================
+
+`cmake-git-version-tracking`_ is the recommended tool for versioning.  At configure 
+time CMake queries ``git describe``, writes the result into a generated C++ 
+header, and re-runs automatically whenever the git state changes.  
+There is no version string to maintain by hand.
+
+**Step 1 — fetch the module.**  Copy ``git_watcher.cmake`` and
+``git_version.h.in`` from the repository into your tree, e.g.::
+
+  cmake/
+    git_watcher.cmake
+    git_version.h.in   # provided by the library
+
+**Step 2 — wire it into** ``CMakeLists.txt``::
+
+  cmake_minimum_required(VERSION 3.14)
+  project(my_project)
+
+  # Pull in the version-tracking module.
+  include(cmake/git_watcher.cmake)
+
+  # This target re-runs whenever .git/HEAD or the index changes.
+  add_git_version_header(${PROJECT_NAME}_version
+      HEADER_FILE_NAME git_version.h
+  )
+
+  add_library(my_lib src/my_lib.cpp)
+  # Make the generated header visible to your targets.
+  target_link_libraries(my_lib PRIVATE ${PROJECT_NAME}_version)
+
+**Step 3 — use the version in C++.**  Include the generated header::
+
+  #include "git_version.h"
+
+  void printVersion() {
+      // GIT_RETRIEVED_STATE is false when building outside a git repo.
+      if (GIT_RETRIEVED_STATE) {
+          std::cout << "Version: " << GIT_DESCRIBE << "\n";
+          // GIT_IS_DIRTY is true if there are uncommitted changes.
+      }
+  }
+
+The most useful macros exposed by the header are:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Macro
+     - Description
+   * - ``GIT_DESCRIBE``
+     - Output of ``git describe --tags --dirty`` (e.g. ``v1.2.3-4-gabcdef0-dirty``)
+   * - ``GIT_TAG``
+     - Most recent tag (e.g. ``v1.2.3``)
+   * - ``GIT_COMMIT_DATE_ISO8601``
+     - Commit timestamp
+   * - ``GIT_IS_DIRTY``
+     - ``true`` if there are uncommitted changes
+   * - ``GIT_RETRIEVED_STATE``
+     - ``false`` when built outside a git repository
+
+
+.. _cmake-git-version-tracking: https://github.com/andrew-hardin/cmake-git-version-tracking
 .. _Google C++ style guide: https://google.github.io/styleguide/cppguide.html
 .. _Catch2: https://github.com/catchorg/Catch2
