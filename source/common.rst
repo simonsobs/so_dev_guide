@@ -6,7 +6,7 @@ Common Standards for Code and Process
 
 This section deals with code formatting and multi-user work flow that
 is common to all SO activities.  This includes some general
-style guidlines, a discussion of git and github usage, and advice on
+style guidelines, a discussion of git and github usage, and advice on
 how to have sensible version codes in code packages.
 
 
@@ -24,7 +24,7 @@ In contrast, "Technique" refers to the usage of programming language
 features to accomplish some desired programmatic behavior.  For
 example, a requirement that "global variables should be avoided unless
 necessary" is a statement about technique; "global variable
-identifiers should be in all caps" is a statment about style.
+identifiers should be in all caps" is a statement about style.
 
 Detailed style and technique recommendations for specific programming
 languages are presented in subsequent chapters.  We will just touch on
@@ -39,7 +39,7 @@ other's work efficiently.  It is helpful if brains and source code
 editors aren't struggling due to unfamiliar formatting choices.  Style
 rules are thus about code maintainability.
 
-Here are things to keep in mind, about code maintainance in SO:
+Here are things to keep in mind, about code maintenance in SO:
 
 - The importance of maintainability, and thus of style, varies with
   context.  For example, one-off data analysis scripts do not need to
@@ -50,7 +50,7 @@ Here are things to keep in mind, about code maintainance in SO:
   may or may not follow some reasonable, established style. In such cases,
   it is important to format only the changes you make and not the entire
   file.
-- When a reviewer reviews new contributed code changes, and trying to understand 
+- When a reviewer reviews new contributed code changes, when trying to understand 
   the behavior of the code, significant stylistic reformatting can be quite 
   distracting. Thus, work that makes substantial "style" improvements should be
   totally separate from work that makes changes to behavior or function. 
@@ -74,9 +74,9 @@ If you think the graphical desktop environment is more your style,
 there are many powerful editors that can be configured to respect
 certain style guidelines, such as ``Visual Studio Code``. 
 
-Furthermore, we will provide configuration files for most linters and
-formatter, so that you can easily setup your editor and to automatically
-format your code to the style guidelines.
+You can find suggested configuration files for most linters and
+formatters in `Confluence Linter Configs`_, so that you can easily setup your 
+editor and to automatically format your code to the style guidelines.
 
 
 Git and Github
@@ -126,14 +126,14 @@ Do not commit garbage
 Do not add temporary files, data files, backup files, or compilation products 
 to a repository!  When preparing to commit code, run ``git status`` frequently 
 to see what files are present, modified, and staged for commit.  Commands like 
-``git add *`` and ``git commit -a`` should not be used and are higly
+``git add *`` and ``git commit -a`` should not be used and are highly
 discouraged, unless you've inspected ``git status`` output to confirm that no 
 garbage will be included by the wildcards.
 
 A git repository can be set up to automatically exclude many standard
 temporary files and directories from wildcard operations.  See the
-documentation on the `.gitingore file`_.  Note that github makes
-`templates`_ available for many different programmaing languages.
+documentation on the `.gitignore file`_.  Note that github makes
+`templates`_ available for many different programming languages.
 
 Do not mix code and data in a repository
 ````````````````````````````````````````
@@ -237,7 +237,7 @@ developers. The author of `this blog post`_ put it best when he wrote:
     properly.
 
 The same author proposes the following seven rules for writing a great git
-commmit message, which we suggest you follow:
+commit message, which we suggest you follow:
 
 #. Separate subject from body with a blank line
 #. Limit the subject line to 50 characters
@@ -265,7 +265,7 @@ Here is an example::
 
 
 **Note for deep repositories:** Some repositories contain distinct
-sub-modules that can operate more or less independently.  In such
+sub-modules that can operate independently.  In such
 cases it may be appropriate to declare, in the commit subject line,
 the sub-module that is affected.  This helps someone browsing the log
 to identify changes that affect some sub-system of interest.  For
@@ -549,7 +549,7 @@ By default, repositories on github permit "Unrestricted Push to
 Main".  This is a simple system, because it does not require the use
 of branching or forking.
 
-We strongly recommend that adminstrators adopt a policy of **"Pull
+We strongly recommend that administrators adopt a policy of **"Pull
 Request and Review"**, and that they configure the github repository
 to enforce that policy.  The configuration is achieved as follows:
 
@@ -570,7 +570,7 @@ There are good reasons to enable, or not enable, each of the other
 protection settings.
 
 It's also important to communicate your policy to potential
-contributors (especially if you expect the contributer base to grow
+contributors (especially if you expect the contributor base to grow
 beyond a small core).  One common way to do this is to explain the
 process in a ``CONTRIBUTING.txt`` (or ``.rst`` or ``.md``) file, in
 the root level of the repository.  Here are links to a couple of
@@ -583,8 +583,14 @@ Be careful to consider your target audience -- are you addressing
 collaborators inside SO, or the general public, or both?
 
 
-Release Numbering
-=================
+Releases and Release Numbering
+==============================
+
+When releasing a new version of your code, we reccomend to use the "Release"
+feature of Github from the main branch of your repository. This will create a
+tag and also automatically generate a release page. It will also allow you to
+trigger a CI workflow to build and upload your code to a package repository
+(such as PyPI).
 
 In addition to the other ways of tracking and tagging the code, it is
 useful to associate clean version tags (such as v1.2.3) to certain
@@ -613,13 +619,19 @@ new features or fix a significant number of issues to the code, without
 changing the API. In the case of releases that are primarily bug fixes or
 rolling releases, the patch version z should be incremented.
 
+Specifics of how to implement semantic versioning, such as `versionneer` and 
+`cmake-git-version-tracking`, in your code is included in the
+specific documentation of each programming language.
+
+
+
 .. _To join the SO Github organization: https://simonsobs.atlassian.net/wiki/spaces/COL/pages/8978437/Digital+Resources#To-join-the-SO-Github-organization
 .. _Policy on Openly Contributed Code: https://simonsobs.atlassian.net/wiki/spaces/COL/pages/2037383173/Digital+Assets+Committee
 .. _github.com: https://github.com
 .. _Git Tutorial: https://git-scm.com/docs/gittutorial
 .. _GitHub Git Handbook: https://guides.github.com/introduction/git-handbook/
 .. _GitHub Hello World: https://guides.github.com/activities/hello-world/
-.. _.gitingore file: https://git-scm.com/docs/gitignore
+.. _.gitignore file: https://git-scm.com/docs/gitignore
 .. _templates: https://github.com/github/gitignore
 .. _this blog post: https://chris.beams.io/posts/git-commit/
 .. _very similar guidelines: https://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines
@@ -631,4 +643,4 @@ rolling releases, the patch version z should be incremented.
 .. _pixell CONTRIBUTING.rst: https://github.com/simonsobs/pixell/blob/master/CONTRIBUTING.rst
 .. _so3g CONTRIBUTING.rst: https://github.com/simonsobs/so3g/blob/master/CONTRIBUTING.rst
 .. _semver.org: https://semver.org/
-.. _python-versioneer: https://github.com/warner/python-versioneer
+.. _Confluence Linter Configs: https://simonsobs.atlassian.net/wiki/spaces/COL/pages/2037383173/Digital+Assets+Committee#Confluence-Linter-Configs
