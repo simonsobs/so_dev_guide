@@ -226,6 +226,68 @@ The most useful macros exposed by the header are:
      - ``false`` when built outside a git repository
 
 
+
+`cmake-git-semver`_ is a lightweight single-file alternative that parses a
+``vMAJOR.MINOR.PATCH[-pre][+build]`` git tag directly into individual CMake
+variables, which can be useful when you need to embed numeric version
+components into build artefacts (shared library ``SOVERSION``, pkg-config
+files, installers, etc.) rather than just exposing a raw ``git describe``
+string to C++ code.
+
+**Step 1 — fetch the module.**  Copy ``git_semver.cmake`` into your tree::
+
+  cmake/
+    git_semver.cmake
+
+**Step 2 — wire it into** ``CMakeLists.txt``::
+
+  cmake_minimum_required(VERSION 3.14)
+  project(my_project)
+
+  include(cmake/git_semver.cmake)
+  git_semver(GIT_SEMVER)
+
+  # Use the parsed components anywhere CMake variables are valid.
+  message(STATUS "Version: ${GIT_SEMVER}")
+  set_target_properties(my_lib PROPERTIES
+      VERSION   "${GIT_SEMVER_MAJOR}.${GIT_SEMVER_MINOR}.${GIT_SEMVER_PATCH}"
+      SOVERSION "${GIT_SEMVER_MAJOR}"
+  )
+
+The variables set after calling ``git_semver(<prefix>)`` are:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - Variable
+     - Description
+   * - ``<PREFIX>``
+     - Full version string (e.g. ``1.2.3-alpha+001``)
+   * - ``<PREFIX>_MAJOR``
+     - Major version component
+   * - ``<PREFIX>_MINOR``
+     - Minor version component
+   * - ``<PREFIX>_PATCH``
+     - Patch version component
+   * - ``<PREFIX>_PRE_RELEASE``
+     - Pre-release label (e.g. ``alpha``), empty if absent
+   * - ``<PREFIX>_BUILD_METADATA``
+     - Build metadata (e.g. ``001``), empty if absent
+
+.. note::
+
+   Tags must follow the ``vMAJOR.MINOR.PATCH`` format exactly.
+   ``cmake-git-semver`` will set all variables to ``0`` (and emit a
+   warning) if no conforming tag is found, so it is safe to use on a
+   fresh repository.
+
+
 .. _cmake-git-version-tracking: https://github.com/andrew-hardin/cmake-git-version-tracking
+.. _cmake-git-semver: https://github.com/nunofachada/cmake-git-semver
 .. _Google C++ style guide: https://google.github.io/styleguide/cppguide.html
 .. _Catch2: https://github.com/catchorg/Catch2
+
+.. note::
+
+   Portions of this page were drafted with the assistance of `Claude Code Sonnet 4.6`.
