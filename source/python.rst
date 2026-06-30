@@ -255,6 +255,8 @@ that users can find them without reading the source.
 Unit Testing
 ============
 
+.. todo:: Move this explanation to common.rst after all PRs are merged.
+
 A *unit test* is an automated check that a small, isolated piece of
 code—typically a single function or method—behaves correctly.  Unit
 tests are distinct from integration tests (which test interactions
@@ -300,10 +302,9 @@ Run a single test file or function with::
   python -m pytest tests/test_mymodule.py
   python -m pytest tests/test_mymodule.py::test_my_function
 
-.. _pytest: https://docs.pytest.org/
 
-travis
-------
+Github Actions for Continuous Integration
+-----------------------------------------
 
 All SO packages should run their test suite automatically on every
 pull request using a continuous integration (CI) service.  The SO
@@ -317,7 +318,7 @@ tests across several Python versions looks like::
       runs-on: ubuntu-latest
       strategy:
         matrix:
-          python-version: ["3.8", "3.9", "3.10"]
+          python-version: ["3.11", "3.12", "3.13"]
       steps:
         - uses: actions/checkout@v3
         - uses: actions/setup-python@v4
@@ -327,7 +328,9 @@ tests across several Python versions looks like::
         - run: python -m pytest tests/
 
 Place this file at ``.github/workflows/tests.yml`` in your repository.
-The CI check must pass before a pull request can be merged.
+The CI check must pass before a pull request can be merged. Similarly, you can
+set the CI to run linter check to verify that the code is formatted according 
+to the style guide.
 
 
 Compiled Extensions
@@ -361,8 +364,86 @@ For all of these, prefer passing ``numpy`` arrays rather than raw
 pointers where possible.  Arrays carry shape and dtype metadata that
 reduces the risk of type mismatches at the Python/C boundary.
 
-.. _pybind11: https://pybind11.readthedocs.io/
-.. _Cython: https://cython.readthedocs.io/
+
+Meson
+-----
+
+For projects that combine Python with C or C++ and need a real build
+system—rather than a single small extension module—we recommend
+`Meson`_ as the build tool. Meson is fast, has first-class support for
+C++ and mixed-language projects, and integrates with Python packaging
+through the `meson-python`_ build backend, which lets ``pip install``
+and ``pip install -e .`` drive a Meson build transparently.
+
+Meson is preferred over raw ``setup.py`` ``Extension`` builds or
+hand-written ``CMakeLists.txt`` plus glue code because it has native,
+well-tested support for both languages, clear cross-compilation and
+dependency-discovery support (via ``pkg-config`` and Meson's own
+wrap system), and a declarative ``meson.build`` syntax that is easier
+to review and maintain than ``setup.py`` build logic.
+
+To use Meson for a Python/C++ package, declare it as the build backend
+in ``pyproject.toml``:
+
+.. code-block:: toml
+
+  [build-system]
+  build-backend = "mesonpy"
+  requires = ["meson-python", "pybind11"]
+
+  [project]
+  name = "mypackage"
+  version = "0.1.0"
+
+and describe the build in a ``meson.build`` file at the repository
+root:
+
+.. code-block:: meson
+
+  project('mypackage', 'cpp', version: '0.1.0')
+
+  py = import('python').find_installation(pure: false)
+  pybind11_dep = dependency('pybind11')
+
+  py.extension_module(
+    '_mypackage',
+    'src/mypackage/_mypackage.cpp',
+    dependencies: [pybind11_dep],
+    install: true,
+  )
+
+  subdir('src/mypackage')
+
+The top-level ``meson.build`` should not list every Python source file
+itself. Instead, the Python package directory needs its own
+``meson.build`` (e.g. ``src/mypackage/meson.build``) that declares
+which ``.py`` files belong to the package and installs them with
+``py.install_sources``:
+
+.. code-block:: meson
+
+  python_sources = [
+    '__init__.py',
+    'core.py',
+    'utils.py',
+  ]
+
+  py.install_sources(
+    python_sources,
+    subdir: 'mypackage',
+  )
+
+Keeping this list in the package's own ``meson.build`` means that adding a new 
+module only requires updating the list next to the code it describes, rather 
+than editing a build file at the root of the repository. The ``subdir`` keyword 
+argument tells Meson where under the install prefix's ``site-packages`` the 
+files should land, and should match the package's import name.
+
+With this setup, both ``pip install .`` and the editable
+``pip install -e .`` workflow described above work without further
+configuration, and the compiled extension is built using Meson rather
+than ``distutils`` / ``setuptools`` directly.
+
 
 Style in Mixed Language Codes
 -----------------------------
@@ -371,7 +452,8 @@ In cases of hybrid Python/C/C++ libraries, consistency between class
 and function names is more important than rigidly following all the
 recommendations for individual languages.  So it's ok, for example, if
 the Python interface to a C++ library uses theSameVariableNames as
-the C++ library.
+the C++ library. However, please maintain the described style guide for Python
+and C++ code separately. 
 
 
 Tips for Successful Scientific Codes
@@ -398,14 +480,13 @@ Load it with ``importlib.import_module`` or ``importlib.util``.
 
 **Use YAML** for structured, human-readable configuration that does
 not require executing code.  YAML is widely understood and has solid
-Python library support via PyYAML_ or ruamel.yaml_.
+Python library support via `PyYAML`_ or `ruamel.yaml`_.
 
 Avoid inventing a custom text format with a hand-written parser; the
 result is almost always harder to use and harder to maintain than
 either of the above options.
 
-.. _PyYAML: https://pyyaml.org/
-.. _ruamel.yaml: https://yaml.readthedocs.io/
+
 
 Command-Line Scripts
 --------------------
@@ -456,15 +537,24 @@ Environment variables are the lightest-weight mechanism::
   DATA_DIR = os.environ.get('MYPACKAGE_DATA_DIR', '/usr/share/mypackage')
 
 A user who needs a non-default path sets the variable in their shell
-profile; the default continues to work for everyone else.  For choices
-that affect the build, expose the same variables in your ``Makefile``
-or ``setup.py``::
+profile; the default continues to work for everyone else.  
 
-  import os
-  extra_compile_args = os.environ.get('CFLAGS', '-O2').split()
+For choices that affect the build, rely on Meson rather than plumbing
+your own environment variables through. Meson natively honors the
+standard ``CC``, ``CXX``, ``CFLAGS``, and ``CXXFLAGS`` environment
+variables for compiler choice::
 
-Document the full set of environment variables in the README so users
-can find them without reading the source.
+  CC=clang CXX=clang++ pip install .
+
+The install prefix is set the same way: pass Meson options through
+``meson-python``'s ``pip`` config-settings rather than a custom
+environment variable::
+
+  pip install . --config-settings=setup-args="-Dprefix=/opt/myenv"
+
+Document the full set of environment variables and any supported
+Meson options in the README so users can find them without reading
+the source.
 
 
 Automatic Semantic Versioning
@@ -550,7 +640,7 @@ To get versioneer operating on your python project, do the following:
 
 .. note::
 
-   Portions of this page were drafted with the assistance of `Claude Code Sonnet 4.6`.
+   Portions of this page were drafted/edited with the assistance of `Claude Code Sonnet 5`.
 
 
 .. _Python versions: https://devguide.python.org/#status-of-python-branches
@@ -567,3 +657,10 @@ To get versioneer operating on your python project, do the following:
 .. _versioneer: https://github.com/python-versioneer/python-versioneer/tree/master
 .. _setuptools_scm: https://github.com/pypa/setuptools-scm/blob/main/setuptools-scm/README.md
 .. _hatchling: https://pypi.org/project/hatchling/
+.. _pytest: https://docs.pytest.org/
+.. _pybind11: https://pybind11.readthedocs.io/
+.. _Cython: https://cython.readthedocs.io/
+.. _Meson: https://mesonbuild.com/
+.. _meson-python: https://mesonpy.readthedocs.io/
+.. _PyYAML: https://pyyaml.org/
+.. _ruamel.yaml: https://yaml.readthedocs.io/
