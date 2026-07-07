@@ -6,7 +6,7 @@ Common Standards for Code and Process
 
 This section deals with code formatting and multi-user work flow that
 is common to all SO activities.  This includes some general
-style guidlines, a discussion of git and github usage, and advice on
+style guidelines, a discussion of git and github usage, and advice on
 how to have sensible version codes in code packages.
 
 
@@ -24,7 +24,7 @@ In contrast, "Technique" refers to the usage of programming language
 features to accomplish some desired programmatic behavior.  For
 example, a requirement that "global variables should be avoided unless
 necessary" is a statement about technique; "global variable
-identifiers should be in all caps" is a statment about style.
+identifiers should be in all caps" is a statement about style.
 
 Detailed style and technique recommendations for specific programming
 languages are presented in subsequent chapters.  We will just touch on
@@ -39,25 +39,22 @@ other's work efficiently.  It is helpful if brains and source code
 editors aren't struggling due to unfamiliar formatting choices.  Style
 rules are thus about code maintainability.
 
-Here are things to keep in mind, about code maintainance in SO:
+Here are things to keep in mind, about code maintenance in SO:
 
 - The importance of maintainability, and thus of style, varies with
   context.  For example, one-off data analysis scripts do not need to
   be held to the same commenting and technique standards as core
   instrument control codes, even though both might be written in
   Python.
-- In many cases we will derive our code from pre-existing works, that
-  may or may not follow some reasonable, established style.
-  Large-scale reformatting jobs are probably not worth the effort,
-  unless substantial modification of the code will then be
-  undertaken.
-- When a programmer is reviewing new contributed code changes, and
-  trying to understand how the behavior of the code is going to be
-  affected, then stylistic reformatting is actually quite distracting
-  (even if it improves the style, in some sense).  Thus, work that
-  makes substantial "style" improvements should be totally separate
-  from work that makes changes to behavior or function.  In practice
-  this means that style fixes and feature work should be in separate
+- In many cases we will derive our code from pre-existing code, that
+  may or may not follow some reasonable, established style. In such cases,
+  it is important to format only the changes you make and not the entire
+  file.
+- When a reviewer reviews new contributed code changes, when trying to understand 
+  the behavior of the code, significant stylistic reformatting can be quite 
+  distracting. Thus, work that makes substantial "style" improvements should be
+  totally separate from work that makes changes to behavior or function. 
+  In practice this means that style fixes and feature work should be in separate
   git commits, if not separate pull requests.
 
 Behind every great writer is a great editor
@@ -75,14 +72,11 @@ one.
 
 If you think the graphical desktop environment is more your style,
 there are many powerful editors that can be configured to respect
-certain style guidelines.  Find one.  (``vim`` and ``emacs`` can
-be run in some graphical environments, and integrate with the
-desktop's pretend that they are graphical, but that's not really their selling
-point.)
+certain style guidelines, such as ``Visual Studio Code``. 
 
-But if you're using ``nano`` (on the command line) or ``Notepad`` (in
-your Windows), you will probably become very frustrated with them,
-and wish you had invested the time in a smarter editor.
+You can find suggested configuration files for most linters and
+formatters in `Confluence Linter Configs`_, so that you can easily setup your 
+editor and to automatically format your code to the style guidelines.
 
 
 Git and Github
@@ -96,9 +90,9 @@ Resources for beginners
 
 `git` is "source code management" software, that you would usually run
 on the same computer where you are editing code, that helps you to
-track changes in source code over time.  `github.com
-<https://github.com>`_ is one of several websites that helps groups of
-people to collaborate on code, using git under the hood.
+track changes in source code over time.  `github.com`_ is one of
+several websites that helps groups of people to collaborate on code,
+using git under the hood.
 
 Basic git and github usage will not be addressed in detail here.  New
 users should do some basic reading on this topic, or ask for help from
@@ -106,9 +100,9 @@ a local expert, to get started.  There is a wide variety of git and
 github advice available online.  Here are a few good tutorials and
 introductions:
 
-- https://git-scm.com/docs/gittutorial
-- https://guides.github.com/introduction/git-handbook/
-- https://guides.github.com/activities/hello-world/
+- `Git Tutorial`_
+- `GitHub Git Handbook`_
+- `GitHub Hello World`_
 
 To make sense of the rest of this section, you should probably:
 
@@ -129,19 +123,17 @@ in the list.
 Do not commit garbage
 `````````````````````
 
-Do not add temporary files, backup files, or compilation products to a
-repository!  When preparing to commit code, run ``git status``
-frequently to see what files are present, modified, and staged for
-commit.  Commands like ``git add *`` and ``git commit -a`` should not
-be used unless you've inspected ``git status`` output to confirm that
-no garbage will be included by the wildcards.
+Do not add temporary files, data files, backup files, or compilation products 
+to a repository!  When preparing to commit code, run ``git status`` frequently 
+to see what files are present, modified, and staged for commit.  Commands like 
+``git add *`` and ``git commit -a`` should not be used and are highly
+discouraged, unless you've inspected ``git status`` output to confirm that no 
+garbage will be included by the wildcards.
 
 A git repository can be set up to automatically exclude many standard
 temporary files and directories from wildcard operations.  See the
-documentation on the `.gitingore file
-<https://git-scm.com/docs/gitignore>`__.  Note that github makes
-`templates <https://github.com/github/gitignore>`__ available for many
-different programmaing languages.
+documentation on the `.gitignore file`_.  Note that github makes
+`templates`_ available for many different programming languages.
 
 Do not mix code and data in a repository
 ````````````````````````````````````````
@@ -154,7 +146,7 @@ you aren't getting rid of those old data files when you commit new
 versions of them.  Every user of the repo will be dragging them
 around, forever.
 
-There are exceptions to this rule... some repositories will be
+There are exceptions to this rule. Some repositories will be
 designed explicitly to contain data.  But be aware of the cost of
 storing large files in a git repo.
 
@@ -192,16 +184,16 @@ github" is "feel free to use blow-by-blow commits in your local work
 flow".  I.e., because you know how to rewrite the commit history, you
 can use your local commits to track the work in a more fine-grained
 way than you would eventually want to have in the main repository.
-You can commit "WIP" (work-in-progress) commits to save one part of
+You can have "WIP" (work-in-progress) commits to save one part of
 the work while you focus on some other aspect of the problem.  Before
 pushing the commits, they can be re-ordered, joined together, and
 decorated with helpful commit log messages.
 
 Here's a nice discussion of why we like to squash-and-rebase:
-https://blog.carbonfive.com/2017/08/28/always-squash-and-rebase-your-git-commits/
+`Always Squash and Rebase Your Git Commits`_.
 
 Here is the relevant part of the git book:
-https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History
+`Git Tools - Rewriting History`_.
 
 Fix it before you push
 ``````````````````````
@@ -237,10 +229,7 @@ Commit Messages
 
 Well crafted git commit messages improve the quality of a repository's history.
 They improve readability and communicate the context of a change to other
-developers. The author of `this blog post`__ put it best when he wrote:
-
-.. _how_to_write_a_git_commit_message: https://chris.beams.io/posts/git-commit/
-__ how_to_write_a_git_commit_message_
+developers. The author of `this blog post`_ put it best when he wrote:
 
     A project’s long-term success rests (among other things) on its
     maintainability, and a maintainer has few tools more powerful than [their]
@@ -248,7 +237,7 @@ __ how_to_write_a_git_commit_message_
     properly.
 
 The same author proposes the following seven rules for writing a great git
-commmit message, which we suggest you follow:
+commit message, which we suggest you follow:
 
 #. Separate subject from body with a blank line
 #. Limit the subject line to 50 characters
@@ -264,8 +253,7 @@ when using certain other git commands (i.e. ``git rebase -i``, ``git log
 associated with each file is displayed next to the file). Since it is used so
 widely we emphasize following especially rules 1 and 2.
 
-The Pro Git book recommends `very similar guidelines
-<https://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>`__.
+The Pro Git book recommends `very similar guidelines`_.
 
 Here is an example::
 
@@ -277,7 +265,7 @@ Here is an example::
 
 
 **Note for deep repositories:** Some repositories contain distinct
-sub-modules that can operate more or less independently.  In such
+sub-modules that can operate independently.  In such
 cases it may be appropriate to declare, in the commit subject line,
 the sub-module that is affected.  This helps someone browsing the log
 to identify changes that affect some sub-system of interest.  For
@@ -299,7 +287,7 @@ where members collaborate on a wide variety of code used in instrument
 control, low-level data processing, data simulations, analysis, and
 everything else.
 
-Our home on github is https://github.com/simonsobs/.
+Our home on github is `github.com/simonsobs`_.
 
 Administration
 ``````````````
@@ -310,8 +298,7 @@ delegated to a set of Organization Admins.  There is one Organization
 Admin for each of three subsystems: "Science" (covering the work of
 the AWGs), "Pipeline" (covering the work of the PWGs) and "Instrument"
 (covering the work of the TWGs).  Contact information for the current
-admins will be kept up-to-date on this wiki page:
-http://simonsobservatory.wikidot.com/main:wiki-mail .
+admins will be kept up-to-date on the `To join the SO Github organization`_ Confluence page.
 
 The primary role of Organization Admins is to add and remove members
 from the organization, to configure Teams, and to change repository
@@ -325,7 +312,7 @@ Organization Admin to help.  Repository admins should take care to
 exercise their privileges only within the rules described here.  For
 example, it might be possible for an admin to make a private
 repository be public; but that power is specifically restricted as
-described in :ref:`Policy on Openly Contributed Code` (and below).  The
+described in `Policy on Openly Contributed Code`_.  The
 Repository Admin will also be the contact person for issues relating
 to "Openly Contributed Code" compliance.
 
@@ -443,9 +430,7 @@ Collaborative Development Model: shared repository
 
 SO encourages the *shared repository model*, rather than the *fork and
 pull model*.  The difference between these models is described in the
-`github.com documentation
-<https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-collaborative-development-models>`__,
-and elsewhere.
+`github.com documentation`_, and elsewhere.
 
 But basically what this means is that our preferred way for SO users
 to submit code changes is to do so directly on the SO github
@@ -455,8 +440,7 @@ without "forking" (see next section).
 The basic steps are described below, but this is a very standard
 procedure that you can read about online.  Note that collaboration is
 more the domain of github (and similar services) rather than git -- so
-you'll find more information on the `github documentation pages
-<https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/proposing-changes-to-your-work-with-pull-requests>`__
+you'll find more information on the `github documentation pages`_
 than in, say, the git book.
 
 #. Clone the SO repo to your system, using ``git clone``.
@@ -491,16 +475,21 @@ than in, say, the git book.
      out in the PR comments, using ``@username``.  To request a formal
      review, use the "Reviewers" widget in the PR window.
 
-#. Merge your changes into the `master` branch.
+#. Merge your changes into the `main` branch.
 
    - When everyone is satisfied with the changes, they can be merged
-     into master.
-   - PRs have a formal "Review" feature.  Depending on how the
-     repository is set up, a formal Review may be *required* prior to
+     into main.
+   - PRs have a formal "Review" feature, which is *required* prior to
      merging.
    - In some cases it might be acceptable for you to "self-merge" the
      PR, even without any review or discussion.  Check with the
      Repository Administrator on this.
+
+#. Delete your topic branch.
+
+   - Once the changes have been merged into main, the topic branch is
+     no longer needed.  You can delete it from your local copy of the
+     repo, and from the github repo.
 
    
 Forking vs. Branching
@@ -529,10 +518,10 @@ Repository Admins should specify the procedures that contributors must
 follow to have their changes incorporated into the repository.
 Consider two possible policies:
 
-**"Unrestricted Push to Master"**
+**"Unrestricted Push to Main"**
 
     In this policy, all users are allowed to push their commits
-    directly to the github:master branch.  This is appropriate in the
+    directly to the github:main branch.  This is appropriate in the
     case that the repository:
 
     - is being developed by only a small group of people.
@@ -544,10 +533,10 @@ Consider two possible policies:
 **"Pull Request and Review"**
 
     In this policy, only a small set of users are permitted to accept
-    revisions into the master branch.  Other developers submit their
+    revisions into the main branch.  Other developers submit their
     code as a "pull request", meaning that it has been developed on a
     separate repository or in a separate branch from the main SO
-    master.  The Pull Request is reviewed by the repository's
+    main branch.  The Pull Request is reviewed by the repository's
     guardians, and requests may be made for amendments.  This level of
     control is appropriate in the case that the repository:
 
@@ -557,10 +546,10 @@ Consider two possible policies:
 
 
 By default, repositories on github permit "Unrestricted Push to
-Master".  This is a simple system, because it does not require the use
+Main".  This is a simple system, because it does not require the use
 of branching or forking.
 
-We strongly recommend that adminstrators adopt a policy of **"Pull
+We strongly recommend that administrators adopt a policy of **"Pull
 Request and Review"**, and that they configure the github repository
 to enforce that policy.  The configuration is achieved as follows:
 
@@ -568,11 +557,11 @@ to enforce that policy.  The configuration is achieved as follows:
 #. Click on Settings tab.  If you don't see that tab, perhaps you
    don't have Admin privileges on the Repo.
 #. In the left column menu, Click on "Branches".
-#. Under "Branch protection rules", see if there is an entry that
-   includes the "master" branch, and if so click its "Edit" button.
-   If not, click "Add rule".
+#. Under "Ruleset", see if there is an entry that
+   includes the "main" branch, and if so click its "Edit" button.
+   If not, click "New Ruleset".
 #. In the settings for the Branch protection rule, make sure it
-   applies to the master branch.  Then enable "Require pull request
+   applies to the main branch.  Then enable "Require pull request
    reviews before merging".
 
 If you want to activate more restrictions, that's probably fine.  It
@@ -581,21 +570,27 @@ There are good reasons to enable, or not enable, each of the other
 protection settings.
 
 It's also important to communicate your policy to potential
-contributors (especially if you expect the contributer base to grow
+contributors (especially if you expect the contributor base to grow
 beyond a small core).  One common way to do this is to explain the
 process in a ``CONTRIBUTING.txt`` (or ``.rst`` or ``.md``) file, in
 the root level of the repository.  Here are links to a couple of
 examples, from public SO repositories:
 
-- https://github.com/simonsobs/pixell/blob/master/CONTRIBUTING.rst
-- https://github.com/simonsobs/so3g/blob/master/CONTRIBUTING.rst
+- `pixell CONTRIBUTING.rst`_
+- `so3g CONTRIBUTING.rst`_
 
 Be careful to consider your target audience -- are you addressing
 collaborators inside SO, or the general public, or both?
 
 
-Release Numbering
-=================
+Releases and Release Numbering
+==============================
+
+When releasing a new version of your code, we reccomend to use the "Release"
+feature of Github from the main branch of your repository. This will create a
+tag and also automatically generate a release page. It will also allow you to
+trigger a CI workflow to build and upload your code to a package repository
+(such as PyPI).
 
 In addition to the other ways of tracking and tagging the code, it is
 useful to associate clean version tags (such as v1.2.3) to certain
@@ -603,130 +598,49 @@ version of your code.  There are many possible, reasonable approaches
 to this, and many ways to accomplish the embedding of version
 information in the code that is distributed to users.
 
-This Guide recommends the use of "Semantic Versioning", see below.  We
-also recommend using github "release tags", and the "versioneer"
-package for embedding version tags into python libraries.
+This Guide recommends the use of "Semantic Versioning", see below.
 
 Semantic Versioning
 -------------------
 
-"Semantic Versioning" is described here: https://semver.org/.  The
+"Semantic Versioning" is described at `semver.org`_.  The
 idea is that versions are of the form X.y.z, where each of X,y,z is a
 non-negative integer, and there are certain rules that dictate whether
 changes to the software should induce an increment in X, y, or z.
 
-I'm sure you'll eventually read the whole semver page.  But in the
-meantime, know that in the initial period of development, your version
-numbers should be 0.x.y.  The major version "0" is special in that
-you're "allowed" to make changes to your code's API without
-incrementing the major version number.
+In the initial period of development, your version numbers should be 0.x.y.  
+The major version "0" is special in that you're "allowed" to make changes to 
+your code's API without incrementing the major version number.
 
-In some cases, a codebase might go through multiple phases of rapid
-API evolution, while still wanting to have public, sequential version
-tags.  A fun solution to this is to differentiate between even and odd
-Major or Minor release numbers.
+In general, the major version X should be incremented when you make significant
+changes to the code's API. These changes may also break backwards compatibility
+with previous versions. The minor version y should be incremented when you add
+new features or fix a significant number of issues to the code, without 
+changing the API. In the case of releases that are primarily bug fixes or
+rolling releases, the patch version z should be incremented.
 
-versioneer
-----------
-
-The "versioneer" tool is a nice way to automate the creation of
-version codes for python packages, and to make those codes available
-from within the package: https://github.com/warner/python-versioneer.
-This is most appropriate for git projects that use distutils or
-setuptools (i.e. that have a ``setup.py`` to drive the build and
-installation).
-
-Once versioneer is working in your repository, the package will return
-informative version strings such as ``0.1.2+5.gc6ca281`` (in this case
-indicating that the library is 5 commits beyond the commit tagged as
-0.1.2, with commit hash ``c6ca281``).
-
-To get versioneer operating on your python project, do the following:
-
-1. Install versioneer.  ``pip install versioneer`` will do it, but see
-   below about using the bleeding edge version from git if you run
-   into issues with "cmdclass" in your ``setup(...)`` call.
-
-2. Create, or edit, ``setup.cfg`` (the configuration information for
-   setup.py) and add these lines::
-     
-     [versioneer]
-     VCS = git
-     style = pep440
-     versionfile_source = mylibname/_version.py
-     versionfile_build = mylibname/_version.py
-     tag_prefix = v
-     parentdir_prefix = mylibname-
-
-   Naturally you must replace "mylibname" with the name of your python
-   package.  The "tag_prefix" affects how versioneer searches your
-   github tags; in this case it will look for tags starting with v,
-   such as v0.1.2.
-
-3. Edit setup.py to integrate versioneer's functionality.  That
-   amounts to::
-
-     ...
-     import versioneer
-     ...
-     setup(
-       ...
-       version=versioneer.get_version(),
-       ...
-       cmdclass=versioneer.get_cmdclass(cmdclass),
-       ...
-       )
-
-   If you already have a ``cmdclass`` entry, that can be worked
-   around; seek advice.
-
-4. Run the versioneer binary, at the top of your source directory
-   (where setup.py is), ``versioneer install``. This will check that
-   you've made the changes to setup.cfg and setup.py; it will also
-   create _version.py in your python source tree, versioneer.py in the
-   root level, and will modify a few other git/PyPI files.  ``git
-   status`` will show something like::
-
-   	new file:   .gitattributes
-	modified:   MANIFEST.in
-	modified:   mylibname/__init__.py
-	new file:   mylibname/_version.py
-	new file:   versioneer.py
-
-   Those can all be committed, along with your changes to setup.cfg
-   and setup.py.  A new build should yield informative version
-   strings, e.g.::
-
-     $ python -c 'import mylibname; print (mylibname.__version__)'
-     0.4.0+2.g13ed14d.dirty
-
-5. (Optional) If you are using Sphinx to build documentation for your project
-   you can have Sphinx determine the project version number from versioneer by
-   importing ``__version__`` in your ``conf.py`` file::
-
-    from mylibname import __version__ as mylibname_version
-
-   You should then change the ``version`` and ``release`` fields to
-   ``mylibname_version``::
-
-    # The short X.Y version
-    version = mylibname_version
-    # The full version, including alpha/beta/rc tags
-    release = mylibname_version
-
-6. All you need to do to bump the version number is to tag the
-   relevant commit, with a tag that matches the right format (in this
-   example, something like v0.4.0).  The github "releases" feature
-   allows you to do this, and to see all the tags.
+Specifics of how to implement semantic versioning, such as `versionneer` and 
+`cmake-git-version-tracking`, in your code is included in the
+specific documentation of each programming language.
 
 
-(Note about ``cmdclass`` -- if your setup.py already modifies the
-cmdclass with custom build classes, you need to merge them with the
-ones provided by versioneer.  This is easy in the most recent version
-of versioneer on github (as of Nov. 8 2018), but is not easy in the
-current version available on PyPI, 0.18 (dated Jan. 1 2017).  Once
-versioneer has been "set up" on the code, the file versioneer.py in
-the root of the source tree is all you need; so your package won't
-depend, for the user, on this bleeding edge version of versioneer.)
 
-
+.. _To join the SO Github organization: https://simonsobs.atlassian.net/wiki/spaces/COL/pages/8978437/Digital+Resources#To-join-the-SO-Github-organization
+.. _Policy on Openly Contributed Code: https://simonsobs.atlassian.net/wiki/spaces/COL/pages/2037383173/Digital+Assets+Committee
+.. _github.com: https://github.com
+.. _Git Tutorial: https://git-scm.com/docs/gittutorial
+.. _GitHub Git Handbook: https://guides.github.com/introduction/git-handbook/
+.. _GitHub Hello World: https://guides.github.com/activities/hello-world/
+.. _.gitignore file: https://git-scm.com/docs/gitignore
+.. _templates: https://github.com/github/gitignore
+.. _this blog post: https://chris.beams.io/posts/git-commit/
+.. _very similar guidelines: https://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines
+.. _Always Squash and Rebase Your Git Commits: https://blog.carbonfive.com/2017/08/28/always-squash-and-rebase-your-git-commits/
+.. _Git Tools - Rewriting History: https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History
+.. _github.com/simonsobs: https://github.com/simonsobs/
+.. _github.com documentation: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-collaborative-development-models
+.. _github documentation pages: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/proposing-changes-to-your-work-with-pull-requests
+.. _pixell CONTRIBUTING.rst: https://github.com/simonsobs/pixell/blob/master/CONTRIBUTING.rst
+.. _so3g CONTRIBUTING.rst: https://github.com/simonsobs/so3g/blob/master/CONTRIBUTING.rst
+.. _semver.org: https://semver.org/
+.. _Confluence Linter Configs: https://simonsobs.atlassian.net/wiki/spaces/COL/pages/2037383173/Digital+Assets+Committee#Confluence-Linter-Configs
