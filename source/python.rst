@@ -5,15 +5,16 @@ Python
 Overview
 ========
 
-Python is a high-level laanguage that is widely used in the scientific computing
+Python is a high-level language that is widely used in the scientific computing
 community. It is general purpose, easy to learn and has a rich ecosystem of 
 libraries. It is also highly portable and readable which significantly reduces
 the cost of maintaining and sharing code.
 
-For these reasons, it is the language SO will use the most for its codebase. Any
-other language choise should be either for a very specific use case, or for
-having significant performance advantages. In the latter case, the code should be
-written in C++ and provide a Python interface to the user.
+For these reasons, it is the language SO will use the most for its scientific 
+computing codebase. Any other language choice should be either for a very 
+specific use case, or for having significant performance advantages. In the 
+latter case, the code should be written in C++ and provide a Python interface 
+to the user.
 
 Version Support
 ===============
@@ -75,11 +76,11 @@ single letter names, except for loop variables, even if it is a commonly underst
 variable.
 
 We will utilize the following naming conventions:
-1. Class and struct names should be in PascalCase, e.g. `MyClass`.
-2. Function names should be in camelCase, e.g. `myFunction`.
-3. Variable names should be in snake_case, e.g. `my_variable`.
-4. Constants should be in ALL_CAPS with underscores, e.g. `MAX_SIZE`.
-5. Namespaces should be in snake_case, e.g. `my_namespace`.
+#. Class and struct names should be in PascalCase, e.g. `MyClass`.
+#. Function names should be in camelCase, e.g. `myFunction`.
+#. Variable names should be in snake_case, e.g. `my_variable`.
+#. Constants should be in ALL_CAPS with underscores, e.g. `MAX_SIZE`.
+#. Modules and submodules should be in snake_case, e.g. `my_module`.
 
 
 Typing
@@ -149,8 +150,8 @@ We will accept any standard that meets the following criteria:
 - compact and nicely formatted text within Python's "help" facility
 - nicely formatted text in auto-generated documentation using Sphinx
 
-We strongly recommended that SO codes use either the `numpy
-style`_ as it is widely used to scientific Python packages, from numpy to astropy.
+We strongly recommended that SO codes uses the `numpy
+style`_ as it is widely used in scientific Python packages, from numpy to astropy.
 You can also use the `google style`_ for docstrings, but you need to be clear
 about it in either the README or CONITRIBUTING file. These two styles are
 very similar.  They are both supported in Sphinx, e.g. through the
@@ -255,34 +256,6 @@ that users can find them without reading the source.
 Unit Testing
 ============
 
-.. todo:: Move this explanation to common.rst after all PRs are merged.
-
-A *unit test* is an automated check that a small, isolated piece of
-code—typically a single function or method—behaves correctly.  Unit
-tests are distinct from integration tests (which test interactions
-between components) or end-to-end tests (which test a complete
-workflow).  The goal is to catch regressions quickly and to give
-developers confidence that individual components are correct before
-combining them.
-
-Designing good unit tests
--------------------------
-
-Good unit tests share a few properties:
-
-- **Isolated**: Each test exercises one code path and does not depend
-  on state left by another test.  Tests that share mutable global
-  state or that must run in a specific order are fragile.
-- **Deterministic**: A test should produce the same result every time.
-  Avoid relying on wall-clock time, random seeds, or external network
-  resources unless the test explicitly controls them.
-- **Fast**: Unit tests should run in milliseconds.  Slow tests
-  discourage developers from running the suite frequently.
-- **Focused**: Test one behavior per test function.  When a focused
-  test fails, its name alone should indicate what broke.
-- **Thorough on edge cases**: In addition to the happy path, test
-  boundary conditions, empty inputs, and expected failure modes.
-
 unittest
 --------
 
@@ -331,6 +304,13 @@ Place this file at ``.github/workflows/tests.yml`` in your repository.
 The CI check must pass before a pull request can be merged. Similarly, you can
 set the CI to run linter check to verify that the code is formatted according 
 to the style guide.
+
+.. important::
+
+  CI time costs money, especially when running on Private repos. Please be 
+  considerate and make sure that your tests remain fast and efficient. Another
+  way to avoid the cost is by making your repo public.
+
 
 
 Compiled Extensions
