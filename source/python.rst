@@ -77,7 +77,7 @@ variable.
 
 We will utilize the following naming conventions:
 #. Class and struct names should be in PascalCase, e.g. `MyClass`.
-#. Function names should be in camelCase, e.g. `myFunction`.
+#. Function names should be in snake_case, e.g. `my_function`.
 #. Variable names should be in snake_case, e.g. `my_variable`.
 #. Constants should be in ALL_CAPS with underscores, e.g. `MAX_SIZE`.
 #. Modules and submodules should be in snake_case, e.g. `my_module`.
@@ -86,7 +86,7 @@ We will utilize the following naming conventions:
 Typing
 ------
 
-Python typing is optional, but we  recommend to use it in all new code. It provides
+Python typing is optional, but we recommend to use it in all new code. It provides
 a way to document the expected types of a function's arguments and return value.
 We also suggest when used to use the `typing` module of the standard library,
 and not a third part library. Please refer to `PEP 484`_ for more information.
@@ -153,7 +153,7 @@ We will accept any standard that meets the following criteria:
 We strongly recommended that SO codes uses the `numpy
 style`_ as it is widely used in scientific Python packages, from numpy to astropy.
 You can also use the `google style`_ for docstrings, but you need to be clear
-about it in either the README or CONITRIBUTING file. These two styles are
+about it in either the README or CONTRIBUTING file. These two styles are
 very similar.  They are both supported in Sphinx, e.g. through the
 `napoleon plugin`_.
 
@@ -496,7 +496,7 @@ output, type coercion, and a consistent interface for users::
 Declare scripts as ``scripts`` in ``pyproject.toml`` so that
 ``pip install`` places them on the user's ``PATH`` automatically:
 
-.. code-block::toml
+.. code-block:: toml
 
   [project.scripts]
   my-tool = "mypackage.cli:main"
@@ -542,7 +542,7 @@ Automatic Semantic Versioning
 
 There are several tools and methods to automatically generate version numbers
 for Python packages. Three of the most popular are `versioneer`_, 
-`setuptools_scm`_ and `hatchling`_.
+`setuptools_scm`_ and `hatch-vcs`_.
 
 Versioneer
 ----------
@@ -636,7 +636,7 @@ To get versioneer operating on your python project, do the following:
 .. _click: https://click.palletsprojects.com/
 .. _versioneer: https://github.com/python-versioneer/python-versioneer/tree/master
 .. _setuptools_scm: https://github.com/pypa/setuptools-scm/blob/main/setuptools-scm/README.md
-.. _hatchling: https://pypi.org/project/hatchling/
+.. _hatch-vcs: https://github.com/ofek/hatch-vcs/
 .. _pytest: https://docs.pytest.org/
 .. _pybind11: https://pybind11.readthedocs.io/
 .. _Cython: https://cython.readthedocs.io/

@@ -103,7 +103,7 @@ provided that any of the following is true:
 - SO controls the copyright of the code.
 - The code is openly licensed.
 - The code is not openly licensed, but a specific license has been
-  obtained that will grant the neccessary rights over the necessary
+  obtained that will grant the necessary rights over the necessary
   time period.
 
 In contrast to "Openly Contributed Code", we defined "Specially
