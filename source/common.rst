@@ -586,7 +586,7 @@ collaborators inside SO, or the general public, or both?
 Releases and Release Numbering
 ==============================
 
-When releasing a new version of your code, we reccomend to use the "Release"
+When releasing a new version of your code, we recommend to use the "Release"
 feature of Github from the main branch of your repository. This will create a
 tag and also automatically generate a release page. It will also allow you to
 trigger a CI workflow to build and upload your code to a package repository
@@ -619,7 +619,7 @@ new features or fix a significant number of issues to the code, without
 changing the API. In the case of releases that are primarily bug fixes or
 rolling releases, the patch version z should be incremented.
 
-Specifics of how to implement semantic versioning, such as `versionneer` and 
+Specifics of how to implement semantic versioning, such as `versioneer` and
 `cmake-git-version-tracking`, in your code is included in the
 specific documentation of each programming language.
 
@@ -639,7 +639,7 @@ workflow).  The goal is to catch regressions quickly and to give
 developers confidence that individual components are correct before
 combining them.
 
-All codeabases regardless of programming language should include unit tests.
+All codebases regardless of programming language should include unit tests.
 
 Designing good unit tests
 -------------------------

@@ -23,7 +23,7 @@ Why have a Developer's Guide and Style Guide?
 Code, especially open source code, is a collaborative effort. In addition, we all have
 our own coding styles and preferences, and that's a good thing. Furthermore, software 
 code is a product that is distributed to the public and hopefully will be used by many 
-people outside of the collaboration. Incosistent code styles makes it harder for 
+people outside of the collaboration. Inconsistent code styles makes it harder for
 contributors and users to read, understand and reuse code. A developer and style 
 guide aims to lower this friction.
 
@@ -36,8 +36,8 @@ small, focused, and easier on maintainers to review.
 
 A developer guide goes further: it captures the institutional knowledge that experienced
 SO developers carry in their heads.  Which testing framework do we use?  How should a
-new package be structured?  Writing these decisions down means a new collaborator can be 
-productive in as little time as possble. 
+new package be structured?  Writing these decisions down means a new collaborator can be
+productive in as little time as possible.
 
 The purpose of the guide is not to enforce uniformity just for the sake of uniformity.
 Rather to reduce the time needed for new contributors to get up to speed, and reduce 
