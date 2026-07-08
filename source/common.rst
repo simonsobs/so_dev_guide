@@ -624,6 +624,41 @@ Specifics of how to implement semantic versioning, such as `versionneer` and
 specific documentation of each programming language.
 
 
+Unit Testing
+============
+
+Unit testing is an important part of software development. It helps ensure that the code
+is working as expected, helps catch bugs early and verify that the code is not regressing
+when feature or changes are made. Testing suites are only expected to grow over time.
+
+A *unit test* is an automated check that a small, isolated piece of
+code—typically a single function or method—behaves correctly.  Unit
+tests are distinct from integration tests (which test interactions
+between components) or end-to-end tests (which test a complete
+workflow).  The goal is to catch regressions quickly and to give
+developers confidence that individual components are correct before
+combining them.
+
+All codeabases regardless of programming language should include unit tests.
+
+Designing good unit tests
+-------------------------
+
+Good unit tests share a few properties:
+
+- **Isolated**: Each test exercises one code path and does not depend
+  on state left by another test.  Tests that share mutable global
+  state or that must run in a specific order are fragile.
+- **Deterministic**: A test should produce the same result every time.
+  Avoid relying on wall-clock time, random seeds, or external network
+  resources unless the test explicitly controls them.
+- **Fast**: Unit tests should run in milliseconds.  Slow tests
+  discourage developers from running the suite frequently.
+- **Focused**: Test one behavior per test function.  When a focused
+  test fails, its name alone should indicate what broke.
+- **Thorough on edge cases**: In addition to the happy path, test
+  boundary conditions, empty inputs, and expected failure modes.
+
 
 .. _To join the SO Github organization: https://simonsobs.atlassian.net/wiki/spaces/COL/pages/8978437/Digital+Resources#To-join-the-SO-Github-organization
 .. _Policy on Openly Contributed Code: https://simonsobs.atlassian.net/wiki/spaces/COL/pages/2037383173/Digital+Assets+Committee

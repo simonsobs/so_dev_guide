@@ -72,11 +72,11 @@ single letter names, except for loop variables, even if it is a commonly underst
 variable.
 
 We will utilize the following naming conventions:
-1. Class and struct names should be in PascalCase, e.g. `MyClass`.
-2. Function names should be in camelCase, e.g. `myFunction`.
-3. Variable names should be in snake_case, e.g. `my_variable`.
-4. Constants should be in ALL_CAPS with underscores, e.g. `MAX_SIZE`.
-5. Namespaces should be in snake_case, e.g. `my_namespace`.
+#. Class and struct names should be in PascalCase, e.g. `MyClass`.
+#. Function names should be in camelCase, e.g. `myFunction`.
+#. Variable names should be in snake_case, e.g. `my_variable`.
+#. Constants should be in ALL_CAPS with underscores, e.g. `MAX_SIZE`.
+#. Namespaces should be in snake_case, e.g. `my_namespace`.
 
 
 Header Files
@@ -148,19 +148,70 @@ For example:
 Unit Testing
 ============
 
-Unit testing is an important part of software development. It helps ensure that the code
-is working as expected, helps catch bugs early and verify that the code is not regressing
-when feature or changes are made. Testing suites are only expected to grow over time.
-
 Due to the importance of unit testing, we will require that all new code be accompanied by at
 least one unit test. The unit test should be in a separate file, and should be named
-`<name>_test.cpp`, where `<name>` is the name of the file being tested.
+`<name>_test.cpp`, where `<name>` is the name of the file being tested. Organize tests 
+in a ``tests/`` directory at the repository root.
 
-`Catch2`_ is the unit testing framework for C++ we will use for SO as it is easy 
+`Catch2`_ is the unit testing framework for C++ we will use for SO as it is easy
 to use, represents tests as normal boolean expressions and also allows benchmarking code.
 
 Please refer to the Catch2 documentation for more information on how to write unit tests.
+To have Catch2 tests picked up by CTest (as used in the CI workflow below), call
+``catch_discover_tests`` on your test target in ``CMakeLists.txt``; see the
+`Catch2 CMake integration`_ documentation for details.
 
+For CTest to find and build these tests, the root ``CMakeLists.txt`` must enable
+testing and pull in the ``tests/`` directory::
+
+  # root CMakeLists.txt
+  enable_testing()
+  add_subdirectory(tests)
+
+with a ``tests/CMakeLists.txt`` that builds the test binary and registers it::
+
+  # tests/CMakeLists.txt
+  find_package(Catch2 REQUIRED)
+  add_executable(my_lib_test my_lib_test.cpp)
+  target_link_libraries(my_lib_test PRIVATE my_lib Catch2::Catch2WithMain)
+
+  include(CTest)
+  include(Catch)
+  catch_discover_tests(my_lib_test)
+
+Github Actions for Continuous Integration
+-----------------------------------------
+
+All SO packages should run their test suite automatically on every
+pull request using a continuous integration (CI) service.  The SO
+Github organization uses GitHub Actions; a minimal workflow that builds
+the project and runs its test suite across several compilers looks like::
+
+  name: Tests
+  on: [push, pull_request]
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          compiler: [g++-11, clang++-10]
+      steps:
+        - uses: actions/checkout@v3
+        - run: sudo apt-get update && sudo apt-get install -y ${{ matrix.compiler }}
+        - run: cmake -B build -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
+        - run: cmake --build build
+        - run: ctest --test-dir build
+
+Place this file at ``.github/workflows/tests.yml`` in your repository.
+The CI check must pass before a pull request can be merged. Similarly, you can
+set the CI to run linter check to verify that the code is formatted according 
+to the style guide.
+
+.. important::
+
+  CI time costs money, especially when running on Private repos. Please be 
+  considerate and make sure that your tests remain fast and efficient. Another
+  way to avoid the cost is by making your repo public.
 
 Automatic Semantic Versioning
 ==============================
@@ -287,6 +338,7 @@ The variables set after calling ``git_semver(<prefix>)`` are:
 .. _cmake-git-semver: https://github.com/nunofachada/cmake-git-semver
 .. _Google C++ style guide: https://google.github.io/styleguide/cppguide.html
 .. _Catch2: https://github.com/catchorg/Catch2
+.. _Catch2 CMake integration: https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md
 
 .. note::
 

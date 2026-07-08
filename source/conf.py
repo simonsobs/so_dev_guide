@@ -54,6 +54,11 @@ extensions = [
     'sphinx.ext.todo',
 ]
 
+# Prefix auto-generated section labels with the document name so that
+# identically named sections in different files (e.g. "Unit Testing" in
+# both common.rst and python.rst) don't collide.
+autosectionlabel_prefix_document = True
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
